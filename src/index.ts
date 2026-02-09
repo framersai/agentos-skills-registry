@@ -1,8 +1,8 @@
 /**
- * @fileoverview AgentOS Skills Registry Bundle.
+ * @fileoverview AgentOS Skills Registry.
  *
- * Single-import package that discovers and loads curated AgentOS skills
- * from the `@framers/agentos-skills` catalog.
+ * Single package containing curated SKILL.md prompt modules, a typed catalog,
+ * and lazy-loading factory functions for SkillRegistry/SkillSnapshot.
  *
  * `@framers/agentos` is an **optional peer dependency** — the catalog helpers
  * (re-exported from `./catalog.js`) work without it.  Only the factory
@@ -14,7 +14,6 @@
 
 import * as path from 'node:path';
 import * as fs from 'node:fs/promises';
-import { createRequire } from 'node:module';
 
 // ── Local mirror types (avoid eager import of @framers/agentos) ─────────────
 // These are structurally compatible with the canonical types from
@@ -71,6 +70,18 @@ export {
 } from './catalog.js';
 export type { SkillCatalogEntry } from './catalog.js';
 
+// ── Re-export registry.json schema types ────────────────────────────────────
+
+export type {
+  SkillInstallKind,
+  SkillInstallSpec,
+  SkillRequirements,
+  SkillMetadata,
+  SkillRegistryEntry,
+  SkillsRegistryStats,
+  SkillsRegistry,
+} from './schema-types.js';
+
 // ── Lazy loader for @framers/agentos ────────────────────────────────────────
 
 /** Resolved module cache — loaded at most once per process. */
@@ -107,17 +118,18 @@ async function requireAgentOS(): Promise<NonNullable<typeof _agentosSkillsMod>> 
   }
 }
 
-// ── Path helpers (only depend on @framers/agentos-skills, a real dep) ───────
+// ── Path helpers (resolve locally — SKILL.md files are bundled in this package) ───────
 
-const require = createRequire(import.meta.url);
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
-function resolveCatalogPath(): string {
-  return require.resolve('@framers/agentos-skills/registry.json');
+/** Package root (one level up from dist/ or src/) */
+function resolvePackageRoot(): string {
+  // Works from both dist/index.js and src/index.ts
+  return path.resolve(__dirname, '..');
 }
 
-function resolveSkillsPackageDir(): string {
-  const pkgJsonPath = require.resolve('@framers/agentos-skills/package.json');
-  return path.dirname(pkgJsonPath);
+function resolveCatalogPath(): string {
+  return path.join(resolvePackageRoot(), 'registry.json');
 }
 
 /**
@@ -126,14 +138,14 @@ function resolveSkillsPackageDir(): string {
  * This directory can be passed to `SkillRegistry.loadFromDirs([dir])`.
  */
 export function getBundledCuratedSkillsDir(): string {
-  return path.join(resolveSkillsPackageDir(), 'registry', 'curated');
+  return path.join(resolvePackageRoot(), 'registry', 'curated');
 }
 
 /**
  * Absolute path to the bundled community skills directory.
  */
 export function getBundledCommunitySkillsDir(): string {
-  return path.join(resolveSkillsPackageDir(), 'registry', 'community');
+  return path.join(resolvePackageRoot(), 'registry', 'community');
 }
 
 // ── Options ─────────────────────────────────────────────────────────────────
@@ -176,7 +188,7 @@ export interface SkillsCatalog {
 // ── Catalog JSON loader ─────────────────────────────────────────────────────
 
 /**
- * Load the `@framers/agentos-skills` catalog JSON.
+ * Load the bundled registry.json catalog.
  */
 export async function getSkillsCatalog(): Promise<SkillsCatalog> {
   const registryPath = resolveCatalogPath();
