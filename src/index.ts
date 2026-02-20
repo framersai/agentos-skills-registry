@@ -70,6 +70,18 @@ export {
 } from './catalog.js';
 export type { SkillCatalogEntry } from './catalog.js';
 
+// ── Re-export workspace skill discovery (Feature 3.5) ───────────────────────
+
+export {
+  discoverWorkspaceSkills,
+  mergeWithWorkspaceSkills,
+  parseSkillFrontmatter,
+} from './workspace-discovery.js';
+export type {
+  SkillFrontmatter,
+  WorkspaceDiscoveryOptions,
+} from './workspace-discovery.js';
+
 // ── Re-export registry.json schema types ────────────────────────────────────
 
 export type {

@@ -24,6 +24,10 @@
       "import": "./dist/catalog.js",
       "types": "./dist/catalog.d.ts"
     },
+    "./workspace-discovery": {
+      "import": "./dist/workspace-discovery.js",
+      "types": "./dist/workspace-discovery.d.ts"
+    },
     "./registry.json": "./registry.json",
     "./types": "./types.d.ts",
     "./package.json": "./package.json"
