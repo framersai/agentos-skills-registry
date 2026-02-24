@@ -1,0 +1,28 @@
+# Example CAPABILITY.yaml — Tool type with inputSchema
+# Demonstrates how to define structured input parameters.
+
+id: custom:deep-research
+kind: tool
+name: deep-research
+displayName: Deep Research Agent
+description: >
+  Use when the user asks for a comprehensive analysis, competitive research,
+  technical deep-dive, or multi-source synthesis. Orchestrates multiple
+  web-search calls, content extraction, and summarization into a structured
+  report. Slower than web-search but much more thorough.
+category: information
+tags: [research, analysis, synthesis, long-form]
+requiredSecrets: []
+requiredTools: [web-search, web-browser]
+hasSideEffects: false
+inputSchema:
+  type: object
+  properties:
+    query:
+      type: string
+      description: The research question or topic
+    depth:
+      type: string
+      enum: [brief, standard, thorough]
+      default: standard
+  required: [query]

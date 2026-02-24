@@ -1,0 +1,16 @@
+# Example CAPABILITY.yaml — Channel type
+# Demonstrates requiredSecrets and hasSideEffects flags.
+
+id: custom:discord-community
+kind: channel
+name: discord-community
+displayName: Discord Community Integration
+description: >
+  Use when the user wants to post updates to the Discord server, respond to
+  community questions, run server setup, or manage member roles. Covers slash
+  commands, ticket creation, FAQ delivery, and AI chat responses in channels.
+category: communication
+tags: [discord, community, bot, moderation]
+requiredSecrets: [DISCORD_BOT_TOKEN]
+requiredTools: []
+hasSideEffects: true

@@ -1,0 +1,18 @@
+# Example CAPABILITY.yaml — Skill type
+# Copy to ~/.wunderland/capabilities/ or set WUNDERLAND_CAPABILITY_DIRS
+# The CapabilityManifestScanner will auto-discover and index this.
+
+id: custom:web-search-enhanced
+kind: skill
+name: web-search-enhanced
+displayName: Enhanced Web Search
+description: >
+  Use when the user asks about current events, recent news, or wants factual
+  information that may have changed since training. Combines SearXNG + Brave
+  for broad coverage with DuckDuckGo as fallback. Prefer this over static
+  knowledge for anything time-sensitive.
+category: information
+tags: [search, news, real-time, internet]
+requiredSecrets: []
+requiredTools: [web-search]
+hasSideEffects: false
