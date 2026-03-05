@@ -1,153 +1,295 @@
 {
   "version": "1.0.0",
-  "updated": "2026-02-07T00:00:00.000Z",
+  "updated": "2026-03-05T06:35:42.604Z",
   "categories": {
     "curated": [
-      "weather",
-      "github",
-      "slack-helper",
-      "discord-helper",
-      "notion",
-      "obsidian",
-      "summarize",
-      "coding-agent",
-      "healthcheck",
-      "spotify-player",
-      "trello",
+      "1password",
+      "account-manager",
       "apple-notes",
       "apple-reminders",
-      "1password",
+      "blog-publisher",
+      "bluesky-bot",
+      "coding-agent",
+      "content-creator",
+      "deep-research",
+      "discord-helper",
+      "facebook-bot",
+      "git",
+      "github",
+      "healthcheck",
       "image-gen",
+      "instagram-bot",
+      "linkedin-bot",
+      "mastodon-bot",
+      "notion",
+      "obsidian",
+      "pinterest-bot",
+      "reddit-bot",
+      "seo-campaign",
+      "slack-helper",
+      "social-broadcast",
+      "spotify-player",
+      "summarize",
+      "threads-bot",
+      "tiktok-bot",
+      "trello",
+      "twitter-bot",
+      "weather",
+      "web-scraper",
+      "web-search",
       "whisper-transcribe",
-      "git"
+      "youtube-bot"
     ],
     "community": []
   },
   "skills": {
     "curated": [
       {
-        "id": "com.framers.skill.weather",
-        "name": "weather",
+        "id": "com.framers.skill.1password",
+        "name": "1password",
+        "displayName": "1password",
         "version": "1.0.0",
-        "path": "registry/curated/weather",
-        "description": "Look up current weather conditions, forecasts, and severe weather alerts for any location worldwide.",
+        "path": "registry/curated/1password",
+        "description": "Query and retrieve items from 1Password vaults using the 1Password CLI for secure credential access.",
+        "category": "security",
+        "namespace": "wunderland",
         "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["weather", "forecast", "climate", "location"],
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "1password",
+          "passwords",
+          "secrets",
+          "vault",
+          "credentials",
+          "security"
+        ],
+        "requiredSecrets": [
+          "1password.service_account_token"
+        ],
         "metadata": {
-          "emoji": "\u2600\uFE0F"
-        }
-      },
-      {
-        "id": "com.framers.skill.github",
-        "name": "github",
-        "version": "1.0.0",
-        "path": "registry/curated/github",
-        "description": "Manage GitHub repositories, issues, pull requests, releases, and Actions workflows using the gh CLI.",
-        "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["github", "gh", "issues", "pull-requests", "ci-cd", "code-review"],
-        "metadata": {
-          "emoji": "\uD83D\uDC19",
-          "primaryEnv": "GITHUB_TOKEN",
+          "emoji": "🔐",
+          "primaryEnv": "OP_SERVICE_ACCOUNT_TOKEN",
+          "homepage": "https://developer.1password.com/docs/cli",
           "requires": {
-            "bins": ["gh"]
+            "bins": [
+              "op"
+            ]
           },
           "install": [
             {
               "id": "brew",
               "kind": "brew",
-              "formula": "gh",
-              "bins": ["gh"],
-              "label": "Install GitHub CLI (brew)"
-            },
-            {
-              "id": "apt",
-              "kind": "apt",
-              "package": "gh",
-              "bins": ["gh"],
-              "os": ["linux"],
-              "label": "Install GitHub CLI (apt)"
+              "formula": "1password-cli",
+              "bins": [
+                "op"
+              ],
+              "label": "Install 1Password CLI (brew)"
             }
           ]
         }
       },
       {
-        "id": "com.framers.skill.slack-helper",
-        "name": "slack-helper",
+        "id": "com.framers.skill.account-manager",
+        "name": "account-manager",
+        "displayName": "account-manager",
         "version": "1.0.0",
-        "path": "registry/curated/slack-helper",
-        "description": "Manage Slack workspaces, channels, messages, and integrations through the Slack API.",
+        "path": "registry/curated/account-manager",
+        "description": "Social account management — registration flows, profile optimization, credential storage, multi-platform account orchestration.",
+        "category": "automation",
+        "namespace": "wunderland",
         "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["slack", "messaging", "workspace", "notifications", "team-chat"],
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "accounts",
+          "credentials",
+          "registration",
+          "profiles",
+          "management",
+          "automation"
+        ],
+        "requiredTools": [
+          "credentialsSet",
+          "credentialsGet",
+          "credentialsList",
+          "credentialsImport",
+          "browserNavigate",
+          "browserClick",
+          "browserFill",
+          "browserScreenshot",
+          "browserSnapshot",
+          "browserSession"
+        ],
         "metadata": {
-          "emoji": "\uD83D\uDCAC",
-          "primaryEnv": "SLACK_BOT_TOKEN"
+          "emoji": "🔑"
         }
       },
       {
-        "id": "com.framers.skill.discord-helper",
-        "name": "discord-helper",
+        "id": "com.framers.skill.apple-notes",
+        "name": "apple-notes",
+        "displayName": "apple-notes",
         "version": "1.0.0",
-        "path": "registry/curated/discord-helper",
-        "description": "Manage Discord servers, channels, roles, and messages through the Discord API.",
+        "path": "registry/curated/apple-notes",
+        "description": "Create, read, search, and manage notes in Apple Notes using AppleScript and macOS automation.",
+        "category": "productivity",
+        "namespace": "wunderland",
         "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["discord", "messaging", "server", "moderation", "community"],
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "apple-notes",
+          "macos",
+          "notes",
+          "applescript",
+          "automation"
+        ],
+        "requiredTools": [
+          "filesystem"
+        ],
         "metadata": {
-          "emoji": "\uD83C\uDFAE",
-          "primaryEnv": "DISCORD_BOT_TOKEN"
+          "emoji": "📱",
+          "os": [
+            "darwin"
+          ],
+          "requires": {
+            "bins": [
+              "osascript"
+            ]
+          }
         }
       },
       {
-        "id": "com.framers.skill.notion",
-        "name": "notion",
+        "id": "com.framers.skill.apple-reminders",
+        "name": "apple-reminders",
+        "displayName": "apple-reminders",
         "version": "1.0.0",
-        "path": "registry/curated/notion",
-        "description": "Read, create, and manage pages, databases, and content blocks in Notion workspaces.",
+        "path": "registry/curated/apple-reminders",
+        "description": "Create, manage, and query reminders and lists in Apple Reminders using AppleScript and macOS automation.",
+        "category": "productivity",
+        "namespace": "wunderland",
         "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["notion", "wiki", "database", "notes", "project-management", "knowledge-base"],
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "apple-reminders",
+          "macos",
+          "reminders",
+          "tasks",
+          "applescript",
+          "automation"
+        ],
+        "requiredTools": [
+          "filesystem"
+        ],
         "metadata": {
-          "emoji": "\uD83D\uDCD3",
-          "primaryEnv": "NOTION_API_KEY"
+          "emoji": "✅",
+          "os": [
+            "darwin"
+          ],
+          "requires": {
+            "bins": [
+              "osascript"
+            ]
+          }
         }
       },
       {
-        "id": "com.framers.skill.obsidian",
-        "name": "obsidian",
+        "id": "com.framers.skill.blog-publisher",
+        "name": "blog-publisher",
+        "displayName": "blog-publisher",
         "version": "1.0.0",
-        "path": "registry/curated/obsidian",
-        "description": "Read, create, and manage notes, links, and metadata in Obsidian vaults via the local filesystem.",
+        "path": "registry/curated/blog-publisher",
+        "description": "Blog publishing automation — long-form content creation, SEO optimization, cross-posting with canonical URLs, and multi-platform distribution.",
+        "category": "social-automation",
+        "namespace": "wunderland",
         "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["obsidian", "markdown", "notes", "knowledge-graph", "zettelkasten", "pkm"],
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "blog",
+          "publishing",
+          "long-form",
+          "seo",
+          "cross-posting",
+          "dev-to",
+          "hashnode",
+          "medium",
+          "wordpress",
+          "automation"
+        ],
+        "requiredSecrets": [
+          "blog.devtoApiKey",
+          "blog.hashnodeToken",
+          "blog.mediumToken",
+          "blog.wordpressUrl",
+          "blog.wordpressToken"
+        ],
+        "requiredTools": [
+          "blogPublishArticle",
+          "blogUpdateArticle",
+          "blogListArticles",
+          "blogAnalytics",
+          "blogSchedule",
+          "blogCrossPost"
+        ],
         "metadata": {
-          "emoji": "\uD83D\uDC8E"
+          "emoji": "✍️",
+          "primaryEnv": "BLOG_DEVTO_API_KEY"
         }
       },
       {
-        "id": "com.framers.skill.summarize",
-        "name": "summarize",
+        "id": "com.framers.skill.bluesky-bot",
+        "name": "bluesky-bot",
+        "displayName": "bluesky-bot",
         "version": "1.0.0",
-        "path": "registry/curated/summarize",
-        "description": "Summarize text content, web pages, documents, and long-form articles into concise, structured summaries.",
+        "path": "registry/curated/bluesky-bot",
+        "description": "Bluesky automation — decentralized social engagement, custom feed curation, authentic community building, and AT Protocol interaction.",
+        "category": "social-automation",
+        "namespace": "wunderland",
         "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["summarization", "text-processing", "tldr", "reading", "content-analysis"],
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "bluesky",
+          "social-media",
+          "decentralized",
+          "atproto",
+          "community",
+          "feeds",
+          "automation"
+        ],
+        "requiredSecrets": [
+          "bluesky.handle",
+          "bluesky.appPassword"
+        ],
+        "requiredTools": [
+          "blueskyPost",
+          "blueskyReply",
+          "blueskyLike",
+          "blueskyRepost",
+          "blueskySearch",
+          "blueskyFeed",
+          "blueskyFollow",
+          "blueskyAnalytics"
+        ],
         "metadata": {
-          "emoji": "\uD83D\uDCDD"
+          "emoji": "🦋",
+          "primaryEnv": "BLUESKY_APP_PASSWORD"
         }
       },
       {
         "id": "com.framers.skill.coding-agent",
         "name": "coding-agent",
+        "displayName": "coding-agent",
         "version": "1.0.0",
         "path": "registry/curated/coding-agent",
         "description": "Write, review, debug, refactor, and explain code across multiple programming languages and frameworks.",
+        "category": "developer-tools",
+        "namespace": "wunderland",
         "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
         "keywords": [
           "coding",
           "programming",
@@ -156,122 +298,306 @@
           "refactoring",
           "development"
         ],
+        "requiredTools": [
+          "filesystem"
+        ],
         "metadata": {
-          "emoji": "\uD83D\uDCBB"
+          "emoji": "💻"
         }
       },
       {
-        "id": "com.framers.skill.healthcheck",
-        "name": "healthcheck",
+        "id": "com.framers.skill.content-creator",
+        "name": "content-creator",
+        "displayName": "content-creator",
         "version": "1.0.0",
-        "path": "registry/curated/healthcheck",
-        "description": "Monitor health and availability of systems, services, APIs, and infrastructure endpoints.",
+        "path": "registry/curated/content-creator",
+        "description": "AI content creation — blog posts, social captions, video descriptions, newsletter copy, all SEO-optimized and platform-adapted.",
+        "category": "content",
+        "namespace": "wunderland",
         "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["monitoring", "health", "uptime", "infrastructure", "diagnostics", "status"],
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "content",
+          "writing",
+          "blog",
+          "captions",
+          "seo",
+          "copywriting",
+          "creation"
+        ],
+        "requiredTools": [
+          "researchAggregate",
+          "researchTrending",
+          "extractUrl"
+        ],
         "metadata": {
-          "emoji": "\uD83C\uDFE5",
+          "emoji": "✍"
+        }
+      },
+      {
+        "id": "com.framers.skill.deep-research",
+        "name": "deep-research",
+        "displayName": "deep-research",
+        "version": "1.0.0",
+        "path": "registry/curated/deep-research",
+        "description": "Multi-source investigation — academic papers, web research, social media, cross-referencing, and comprehensive report generation.",
+        "category": "research",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "research",
+          "investigation",
+          "academic",
+          "fact-checking",
+          "cross-referencing",
+          "reports"
+        ],
+        "requiredSecrets": [
+          "serper.apiKey"
+        ],
+        "requiredTools": [
+          "researchInvestigate",
+          "researchAcademic",
+          "researchScrape",
+          "researchAggregate",
+          "researchTrending",
+          "extractUrl",
+          "extractYoutube",
+          "extractWikipedia"
+        ],
+        "metadata": {
+          "emoji": "🔎",
+          "primaryEnv": "SERPER_API_KEY"
+        }
+      },
+      {
+        "id": "com.framers.skill.discord-helper",
+        "name": "discord-helper",
+        "displayName": "discord-helper",
+        "version": "1.0.0",
+        "path": "registry/curated/discord-helper",
+        "description": "Manage Discord servers, channels, roles, and messages through the Discord API.",
+        "category": "communication",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "discord",
+          "messaging",
+          "server",
+          "moderation",
+          "community"
+        ],
+        "requiredSecrets": [
+          "discord.bot_token"
+        ],
+        "metadata": {
+          "emoji": "🎮",
+          "primaryEnv": "DISCORD_BOT_TOKEN",
+          "homepage": "https://discord.com/developers"
+        }
+      },
+      {
+        "id": "com.framers.skill.facebook-bot",
+        "name": "facebook-bot",
+        "displayName": "facebook-bot",
+        "version": "1.0.0",
+        "path": "registry/curated/facebook-bot",
+        "description": "Facebook automation — community engagement, page management, visual content publishing, and audience growth.",
+        "category": "social-automation",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "facebook",
+          "social-media",
+          "community",
+          "pages",
+          "groups",
+          "visual-content",
+          "automation"
+        ],
+        "requiredSecrets": [
+          "facebook.accessToken"
+        ],
+        "requiredTools": [
+          "facebookPost",
+          "facebookComment",
+          "facebookLike",
+          "facebookShare",
+          "facebookSearch",
+          "facebookAnalytics",
+          "facebookSchedule",
+          "facebookPagePost"
+        ],
+        "metadata": {
+          "emoji": "📱",
+          "primaryEnv": "FACEBOOK_ACCESS_TOKEN"
+        }
+      },
+      {
+        "id": "com.framers.skill.git",
+        "name": "git",
+        "displayName": "git",
+        "version": "1.0.0",
+        "path": "registry/curated/git",
+        "description": "Work with Git repositories from the command line.",
+        "category": "developer-tools",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "git",
+          "version-control",
+          "vcs",
+          "branching",
+          "commits"
+        ],
+        "requiredTools": [
+          "filesystem"
+        ],
+        "metadata": {
+          "emoji": "🧰",
           "requires": {
-            "anyBins": ["curl", "wget"]
-          }
-        }
-      },
-      {
-        "id": "com.framers.skill.spotify-player",
-        "name": "spotify-player",
-        "version": "1.0.0",
-        "path": "registry/curated/spotify-player",
-        "description": "Control Spotify playback, manage playlists, search music, and get recommendations via the Spotify API.",
-        "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["spotify", "music", "playback", "playlists", "streaming", "audio"],
-        "metadata": {
-          "emoji": "\uD83C\uDFB5",
-          "primaryEnv": "SPOTIFY_CLIENT_ID"
-        }
-      },
-      {
-        "id": "com.framers.skill.trello",
-        "name": "trello",
-        "version": "1.0.0",
-        "path": "registry/curated/trello",
-        "description": "Manage Trello boards, lists, cards, checklists, and team workflows via the Trello API.",
-        "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["trello", "kanban", "project-management", "boards", "tasks", "workflow"],
-        "metadata": {
-          "emoji": "\uD83D\uDCCB",
-          "primaryEnv": "TRELLO_API_KEY"
-        }
-      },
-      {
-        "id": "com.framers.skill.apple-notes",
-        "name": "apple-notes",
-        "version": "1.0.0",
-        "path": "registry/curated/apple-notes",
-        "description": "Create, read, search, and manage notes in Apple Notes using AppleScript and macOS automation.",
-        "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["apple-notes", "macos", "notes", "applescript", "automation"],
-        "metadata": {
-          "emoji": "\uD83D\uDCF1",
-          "os": ["darwin"],
-          "requires": {
-            "bins": ["osascript"]
-          }
-        }
-      },
-      {
-        "id": "com.framers.skill.apple-reminders",
-        "name": "apple-reminders",
-        "version": "1.0.0",
-        "path": "registry/curated/apple-reminders",
-        "description": "Create, manage, and query reminders and lists in Apple Reminders using AppleScript and macOS automation.",
-        "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["apple-reminders", "macos", "reminders", "tasks", "applescript", "automation"],
-        "metadata": {
-          "emoji": "\u2705",
-          "os": ["darwin"],
-          "requires": {
-            "bins": ["osascript"]
-          }
-        }
-      },
-      {
-        "id": "com.framers.skill.1password",
-        "name": "1password",
-        "version": "1.0.0",
-        "path": "registry/curated/1password",
-        "description": "Query and retrieve items from 1Password vaults using the 1Password CLI for secure credential access.",
-        "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["1password", "passwords", "secrets", "vault", "credentials", "security"],
-        "metadata": {
-          "emoji": "\uD83D\uDD10",
-          "primaryEnv": "OP_SERVICE_ACCOUNT_TOKEN",
-          "requires": {
-            "bins": ["op"]
+            "bins": [
+              "git"
+            ]
           },
           "install": [
             {
               "id": "brew",
               "kind": "brew",
-              "formula": "1password-cli",
-              "bins": ["op"],
-              "label": "Install 1Password CLI (brew)"
+              "formula": "git",
+              "bins": [
+                "git"
+              ],
+              "label": "Install git (brew)"
+            },
+            {
+              "id": "apt",
+              "kind": "apt",
+              "package": "git",
+              "bins": [
+                "git"
+              ],
+              "os": [
+                "linux"
+              ],
+              "label": "Install git (apt)"
             }
           ]
         }
       },
       {
+        "id": "com.framers.skill.github",
+        "name": "github",
+        "displayName": "github",
+        "version": "1.0.0",
+        "path": "registry/curated/github",
+        "description": "Manage GitHub repositories, issues, pull requests, releases, and Actions workflows using the gh CLI.",
+        "category": "developer-tools",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "github",
+          "git",
+          "issues",
+          "pull-requests",
+          "ci-cd",
+          "code-review"
+        ],
+        "requiredSecrets": [
+          "github.token"
+        ],
+        "requiredTools": [
+          "filesystem"
+        ],
+        "metadata": {
+          "emoji": "🐙",
+          "primaryEnv": "GITHUB_TOKEN",
+          "requires": {
+            "bins": [
+              "gh"
+            ]
+          },
+          "install": [
+            {
+              "id": "brew",
+              "kind": "brew",
+              "formula": "gh",
+              "bins": [
+                "gh"
+              ],
+              "label": "Install GitHub CLI (brew)"
+            },
+            {
+              "id": "apt",
+              "kind": "apt",
+              "package": "gh",
+              "bins": [
+                "gh"
+              ],
+              "os": [
+                "linux"
+              ],
+              "label": "Install GitHub CLI (apt)"
+            }
+          ]
+        }
+      },
+      {
+        "id": "com.framers.skill.healthcheck",
+        "name": "healthcheck",
+        "displayName": "healthcheck",
+        "version": "1.0.0",
+        "path": "registry/curated/healthcheck",
+        "description": "Monitor health and availability of systems, services, APIs, and infrastructure endpoints.",
+        "category": "devops",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "monitoring",
+          "health",
+          "uptime",
+          "infrastructure",
+          "diagnostics",
+          "status"
+        ],
+        "requiredTools": [
+          "web-search"
+        ],
+        "metadata": {
+          "emoji": "🏥",
+          "requires": {
+            "anyBins": [
+              "curl",
+              "wget"
+            ]
+          }
+        }
+      },
+      {
         "id": "com.framers.skill.image-gen",
         "name": "image-gen",
+        "displayName": "image-gen",
         "version": "1.0.0",
         "path": "registry/curated/image-gen",
         "description": "Generate images from text prompts using AI image generation APIs like DALL-E, Stable Diffusion, or Midjourney.",
+        "category": "creative",
+        "namespace": "wunderland",
         "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
         "keywords": [
           "image-generation",
           "ai-art",
@@ -280,84 +606,783 @@
           "creative",
           "visual"
         ],
+        "requiredSecrets": [
+          "openai.api_key"
+        ],
         "metadata": {
-          "emoji": "\uD83C\uDFA8",
-          "primaryEnv": "OPENAI_API_KEY"
+          "emoji": "🎨",
+          "primaryEnv": "OPENAI_API_KEY",
+          "homepage": "https://platform.openai.com/docs/guides/images"
+        }
+      },
+      {
+        "id": "com.framers.skill.instagram-bot",
+        "name": "instagram-bot",
+        "displayName": "instagram-bot",
+        "version": "1.0.0",
+        "path": "registry/curated/instagram-bot",
+        "description": "Instagram growth automation — post scheduling, story creation, hashtag strategy, Reel uploads, and engagement analytics.",
+        "category": "social-automation",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "instagram",
+          "social-media",
+          "growth",
+          "reels",
+          "stories",
+          "hashtags",
+          "automation"
+        ],
+        "requiredSecrets": [
+          "instagram.accessToken"
+        ],
+        "requiredTools": [
+          "instagramPost",
+          "instagramReel",
+          "instagramStory",
+          "instagramComment",
+          "instagramHashtags",
+          "instagramExplore",
+          "instagramAnalytics"
+        ],
+        "metadata": {
+          "emoji": "📸",
+          "primaryEnv": "INSTAGRAM_ACCESS_TOKEN"
+        }
+      },
+      {
+        "id": "com.framers.skill.linkedin-bot",
+        "name": "linkedin-bot",
+        "displayName": "linkedin-bot",
+        "version": "1.0.0",
+        "path": "registry/curated/linkedin-bot",
+        "description": "LinkedIn automation — professional networking, thought leadership posts, company page management, and engagement.",
+        "category": "social-automation",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "linkedin",
+          "social-media",
+          "professional",
+          "networking",
+          "thought-leadership",
+          "automation"
+        ],
+        "requiredSecrets": [
+          "linkedin.accessToken"
+        ],
+        "requiredTools": [
+          "linkedinPost",
+          "linkedinComment",
+          "linkedinLike",
+          "linkedinShare",
+          "linkedinSearch",
+          "linkedinAnalytics",
+          "linkedinSchedule",
+          "linkedinOrgPost"
+        ],
+        "metadata": {
+          "emoji": "💼",
+          "primaryEnv": "LINKEDIN_ACCESS_TOKEN"
+        }
+      },
+      {
+        "id": "com.framers.skill.mastodon-bot",
+        "name": "mastodon-bot",
+        "displayName": "mastodon-bot",
+        "version": "1.0.0",
+        "path": "registry/curated/mastodon-bot",
+        "description": "Mastodon automation — fediverse engagement, content-warned posts, instance-aware community participation, and boost-driven amplification.",
+        "category": "social-automation",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "mastodon",
+          "fediverse",
+          "social-media",
+          "decentralized",
+          "activitypub",
+          "community",
+          "automation"
+        ],
+        "requiredSecrets": [
+          "mastodon.accessToken",
+          "mastodon.instanceUrl"
+        ],
+        "requiredTools": [
+          "mastodonPost",
+          "mastodonReply",
+          "mastodonBoost",
+          "mastodonFavourite",
+          "mastodonSearch",
+          "mastodonTrending",
+          "mastodonFollow",
+          "mastodonAnalytics"
+        ],
+        "metadata": {
+          "emoji": "🐘",
+          "primaryEnv": "MASTODON_ACCESS_TOKEN"
+        }
+      },
+      {
+        "id": "com.framers.skill.notion",
+        "name": "notion",
+        "displayName": "notion",
+        "version": "1.0.0",
+        "path": "registry/curated/notion",
+        "description": "Read, create, and manage pages, databases, and content blocks in Notion workspaces.",
+        "category": "productivity",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "notion",
+          "wiki",
+          "database",
+          "notes",
+          "project-management",
+          "knowledge-base"
+        ],
+        "requiredSecrets": [
+          "notion.api_key"
+        ],
+        "metadata": {
+          "emoji": "📓",
+          "primaryEnv": "NOTION_API_KEY",
+          "homepage": "https://developers.notion.com"
+        }
+      },
+      {
+        "id": "com.framers.skill.obsidian",
+        "name": "obsidian",
+        "displayName": "obsidian",
+        "version": "1.0.0",
+        "path": "registry/curated/obsidian",
+        "description": "Read, create, and manage notes, links, and metadata in Obsidian vaults via the local filesystem.",
+        "category": "productivity",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "obsidian",
+          "markdown",
+          "notes",
+          "knowledge-graph",
+          "zettelkasten",
+          "pkm"
+        ],
+        "requiredTools": [
+          "filesystem"
+        ],
+        "metadata": {
+          "emoji": "💎",
+          "homepage": "https://obsidian.md"
+        }
+      },
+      {
+        "id": "com.framers.skill.pinterest-bot",
+        "name": "pinterest-bot",
+        "displayName": "pinterest-bot",
+        "version": "1.0.0",
+        "path": "registry/curated/pinterest-bot",
+        "description": "Pinterest automation — pin creation, board management, trending content discovery, scheduling, and analytics.",
+        "category": "social-automation",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "pinterest",
+          "social-media",
+          "pins",
+          "boards",
+          "visual-content",
+          "scheduling",
+          "automation"
+        ],
+        "requiredSecrets": [
+          "pinterest.accessToken"
+        ],
+        "requiredTools": [
+          "pinterestPin",
+          "pinterestBoard",
+          "pinterestSearch",
+          "pinterestTrending",
+          "pinterestAnalytics",
+          "pinterestSchedule"
+        ],
+        "metadata": {
+          "emoji": "📌",
+          "primaryEnv": "PINTEREST_ACCESS_TOKEN"
+        }
+      },
+      {
+        "id": "com.framers.skill.reddit-bot",
+        "name": "reddit-bot",
+        "displayName": "reddit-bot",
+        "version": "1.0.0",
+        "path": "registry/curated/reddit-bot",
+        "description": "Reddit community engagement — post to relevant subreddits, comment with expertise, vote, and build karma organically.",
+        "category": "social-automation",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "reddit",
+          "social-media",
+          "community",
+          "comments",
+          "karma",
+          "subreddits",
+          "automation"
+        ],
+        "requiredSecrets": [
+          "reddit.clientId",
+          "reddit.clientSecret",
+          "reddit.username",
+          "reddit.password"
+        ],
+        "requiredTools": [
+          "redditSubmitPost",
+          "redditComment",
+          "redditVote",
+          "redditSearch",
+          "redditTrending",
+          "redditSubscribe",
+          "redditAnalytics"
+        ],
+        "metadata": {
+          "emoji": "🤖",
+          "primaryEnv": "REDDIT_CLIENT_ID"
+        }
+      },
+      {
+        "id": "com.framers.skill.seo-campaign",
+        "name": "seo-campaign",
+        "displayName": "seo-campaign",
+        "version": "1.0.0",
+        "path": "registry/curated/seo-campaign",
+        "description": "SEO link building and optimization — directory submissions, content optimization, keyword research, and backlink tracking via browser automation.",
+        "category": "marketing",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "seo",
+          "link-building",
+          "directories",
+          "keywords",
+          "backlinks",
+          "marketing",
+          "automation"
+        ],
+        "requiredTools": [
+          "browserNavigate",
+          "browserClick",
+          "browserFill",
+          "browserScreenshot",
+          "browserSnapshot",
+          "browserWait",
+          "researchAggregate",
+          "researchTrending"
+        ],
+        "metadata": {
+          "emoji": "📈"
+        }
+      },
+      {
+        "id": "com.framers.skill.slack-helper",
+        "name": "slack-helper",
+        "displayName": "slack-helper",
+        "version": "1.0.0",
+        "path": "registry/curated/slack-helper",
+        "description": "Manage Slack workspaces, channels, messages, and integrations through the Slack API.",
+        "category": "communication",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "slack",
+          "messaging",
+          "workspace",
+          "notifications",
+          "team-chat"
+        ],
+        "requiredSecrets": [
+          "slack.bot_token",
+          "slack.app_token"
+        ],
+        "metadata": {
+          "emoji": "💬",
+          "primaryEnv": "SLACK_BOT_TOKEN",
+          "secondaryEnvs": [
+            "SLACK_APP_TOKEN"
+          ],
+          "homepage": "https://api.slack.com"
+        }
+      },
+      {
+        "id": "com.framers.skill.social-broadcast",
+        "name": "social-broadcast",
+        "displayName": "social-broadcast",
+        "version": "1.0.0",
+        "path": "registry/curated/social-broadcast",
+        "description": "Cross-platform content publishing — adapt a single piece of content for all social channels (Twitter, Instagram, Reddit, Pinterest, TikTok, YouTube, LinkedIn, Facebook, Threads, Bluesky, Mastodon, Farcaster, Lemmy, Google Business, and blog platforms).",
+        "category": "social-automation",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "social-media",
+          "cross-platform",
+          "broadcasting",
+          "content-adaptation",
+          "multi-channel"
+        ],
+        "requiredTools": [
+          "twitterPost",
+          "instagramPost",
+          "redditSubmitPost",
+          "pinterestPin",
+          "tiktokUpload",
+          "youtubeUpload",
+          "linkedinPost",
+          "facebookPost",
+          "threadsPost",
+          "blueskyPost",
+          "mastodonPost",
+          "farcasterCast",
+          "lemmyPost",
+          "gbpCreatePost",
+          "blogPublishArticle",
+          "multiChannelPost"
+        ],
+        "metadata": {
+          "emoji": "📣"
+        }
+      },
+      {
+        "id": "com.framers.skill.spotify-player",
+        "name": "spotify-player",
+        "displayName": "spotify-player",
+        "version": "1.0.0",
+        "path": "registry/curated/spotify-player",
+        "description": "Control Spotify playback, manage playlists, search music, and get recommendations via the Spotify API.",
+        "category": "media",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "spotify",
+          "music",
+          "playback",
+          "playlists",
+          "streaming",
+          "audio"
+        ],
+        "requiredSecrets": [
+          "spotify.client_id",
+          "spotify.client_secret",
+          "spotify.refresh_token"
+        ],
+        "metadata": {
+          "emoji": "🎵",
+          "primaryEnv": "SPOTIFY_CLIENT_ID",
+          "secondaryEnvs": [
+            "SPOTIFY_CLIENT_SECRET",
+            "SPOTIFY_REFRESH_TOKEN"
+          ],
+          "homepage": "https://developer.spotify.com"
+        }
+      },
+      {
+        "id": "com.framers.skill.summarize",
+        "name": "summarize",
+        "displayName": "summarize",
+        "version": "1.0.0",
+        "path": "registry/curated/summarize",
+        "description": "Summarize text content, web pages, documents, and long-form articles into concise, structured summaries.",
+        "category": "information",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "summarization",
+          "text-processing",
+          "tldr",
+          "reading",
+          "content-analysis"
+        ],
+        "requiredTools": [
+          "web-search"
+        ],
+        "metadata": {
+          "emoji": "📝"
+        }
+      },
+      {
+        "id": "com.framers.skill.threads-bot",
+        "name": "threads-bot",
+        "displayName": "threads-bot",
+        "version": "1.0.0",
+        "path": "registry/curated/threads-bot",
+        "description": "Threads automation — conversational engagement, text-first content, real-time discussions, and community building.",
+        "category": "social-automation",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "threads",
+          "social-media",
+          "conversational",
+          "text-first",
+          "engagement",
+          "automation"
+        ],
+        "requiredSecrets": [
+          "threads.accessToken"
+        ],
+        "requiredTools": [
+          "threadsPost",
+          "threadsReply",
+          "threadsLike",
+          "threadsSearch",
+          "threadsAnalytics",
+          "threadsQuote"
+        ],
+        "metadata": {
+          "emoji": "🧵",
+          "primaryEnv": "THREADS_ACCESS_TOKEN"
+        }
+      },
+      {
+        "id": "com.framers.skill.tiktok-bot",
+        "name": "tiktok-bot",
+        "displayName": "tiktok-bot",
+        "version": "1.0.0",
+        "path": "registry/curated/tiktok-bot",
+        "description": "TikTok automation — short-form video publishing, trending sound discovery, hashtag challenges, and community engagement.",
+        "category": "social-automation",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "tiktok",
+          "video",
+          "short-form",
+          "social-media",
+          "trending",
+          "hashtag-challenges",
+          "automation"
+        ],
+        "requiredSecrets": [
+          "tiktok.accessToken"
+        ],
+        "requiredTools": [
+          "tiktokUpload",
+          "tiktokDiscover",
+          "tiktokEngage",
+          "tiktokSearch",
+          "tiktokTrending",
+          "tiktokAnalytics"
+        ],
+        "metadata": {
+          "emoji": "🎵",
+          "primaryEnv": "TIKTOK_ACCESS_TOKEN"
+        }
+      },
+      {
+        "id": "com.framers.skill.trello",
+        "name": "trello",
+        "displayName": "trello",
+        "version": "1.0.0",
+        "path": "registry/curated/trello",
+        "description": "Manage Trello boards, lists, cards, checklists, and team workflows via the Trello API.",
+        "category": "productivity",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "trello",
+          "kanban",
+          "project-management",
+          "boards",
+          "tasks",
+          "workflow"
+        ],
+        "requiredSecrets": [
+          "trello.api_key",
+          "trello.token"
+        ],
+        "metadata": {
+          "emoji": "📋",
+          "primaryEnv": "TRELLO_API_KEY",
+          "secondaryEnvs": [
+            "TRELLO_TOKEN"
+          ],
+          "homepage": "https://developer.atlassian.com/cloud/trello"
+        }
+      },
+      {
+        "id": "com.framers.skill.twitter-bot",
+        "name": "twitter-bot",
+        "displayName": "twitter-bot",
+        "version": "1.0.0",
+        "path": "registry/curated/twitter-bot",
+        "description": "Automated Twitter/X engagement — personality-driven reply bot, thread creation, trending engagement, and analytics tracking.",
+        "category": "social-automation",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "twitter",
+          "social-media",
+          "engagement",
+          "reply-bot",
+          "threads",
+          "trending",
+          "automation"
+        ],
+        "requiredSecrets": [
+          "twitter.bearerToken",
+          "twitter.apiKey",
+          "twitter.apiSecret",
+          "twitter.accessToken",
+          "twitter.accessSecret"
+        ],
+        "requiredTools": [
+          "twitterPost",
+          "twitterReply",
+          "twitterSearch",
+          "twitterTrending",
+          "twitterLike",
+          "twitterRetweet",
+          "twitterThread",
+          "twitterAnalytics"
+        ],
+        "metadata": {
+          "emoji": "🐦",
+          "primaryEnv": "TWITTER_BEARER_TOKEN"
+        }
+      },
+      {
+        "id": "com.framers.skill.weather",
+        "name": "weather",
+        "displayName": "weather",
+        "version": "1.0.0",
+        "path": "registry/curated/weather",
+        "description": "Look up current weather conditions, forecasts, and severe weather alerts for any location worldwide.",
+        "category": "information",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "weather",
+          "forecast",
+          "climate",
+          "location"
+        ],
+        "requiredTools": [
+          "web-search"
+        ],
+        "metadata": {
+          "emoji": "☀️",
+          "homepage": "https://openweathermap.org"
+        }
+      },
+      {
+        "id": "com.framers.skill.web-scraper",
+        "name": "web-scraper",
+        "displayName": "web-scraper",
+        "version": "1.0.0",
+        "path": "registry/curated/web-scraper",
+        "description": "Autonomous web scraping — navigate sites, extract structured data, handle pagination, anti-detection, and proxy rotation.",
+        "category": "automation",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "scraping",
+          "browser",
+          "extraction",
+          "data",
+          "pagination",
+          "proxy",
+          "automation"
+        ],
+        "requiredTools": [
+          "browserNavigate",
+          "browserClick",
+          "browserFill",
+          "browserExtract",
+          "browserScreenshot",
+          "browserSnapshot",
+          "browserScroll",
+          "browserWait",
+          "browserEvaluate",
+          "browserSession"
+        ],
+        "metadata": {
+          "emoji": "🕸"
+        }
+      },
+      {
+        "id": "com.framers.skill.web-search",
+        "name": "web-search",
+        "displayName": "web-search",
+        "version": "1.0.0",
+        "path": "registry/curated/web-search",
+        "description": "Search the web for up-to-date information, news, documentation, and answers to questions.",
+        "category": "information",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "search",
+          "web",
+          "research",
+          "information-retrieval",
+          "news",
+          "documentation"
+        ],
+        "requiredTools": [
+          "web-search"
+        ],
+        "metadata": {
+          "emoji": "🔍"
         }
       },
       {
         "id": "com.framers.skill.whisper-transcribe",
         "name": "whisper-transcribe",
+        "displayName": "whisper-transcribe",
         "version": "1.0.0",
         "path": "registry/curated/whisper-transcribe",
         "description": "Transcribe audio and video files to text using OpenAI Whisper or compatible speech-to-text APIs.",
+        "category": "media",
+        "namespace": "wunderland",
         "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["transcription", "whisper", "speech-to-text", "audio", "stt", "voice"],
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "transcription",
+          "whisper",
+          "speech-to-text",
+          "audio",
+          "stt",
+          "voice"
+        ],
+        "requiredSecrets": [
+          "openai.api_key"
+        ],
+        "requiredTools": [
+          "filesystem"
+        ],
         "metadata": {
-          "emoji": "\uD83C\uDF99\uFE0F",
+          "emoji": "🎙️",
           "primaryEnv": "OPENAI_API_KEY",
+          "homepage": "https://platform.openai.com/docs/guides/speech-to-text",
           "requires": {
-            "anyBins": ["ffmpeg", "ffprobe"]
+            "anyBins": [
+              "ffmpeg",
+              "ffprobe"
+            ]
           },
           "install": [
             {
               "id": "brew-ffmpeg",
               "kind": "brew",
               "formula": "ffmpeg",
-              "bins": ["ffmpeg", "ffprobe"],
+              "bins": [
+                "ffmpeg",
+                "ffprobe"
+              ],
               "label": "Install ffmpeg (brew)"
             },
             {
               "id": "apt-ffmpeg",
               "kind": "apt",
               "package": "ffmpeg",
-              "bins": ["ffmpeg", "ffprobe"],
-              "os": ["linux"],
+              "bins": [
+                "ffmpeg",
+                "ffprobe"
+              ],
+              "os": [
+                "linux"
+              ],
               "label": "Install ffmpeg (apt)"
             }
           ]
         }
       },
       {
-        "id": "com.framers.skill.git",
-        "name": "git",
+        "id": "com.framers.skill.youtube-bot",
+        "name": "youtube-bot",
+        "displayName": "youtube-bot",
         "version": "1.0.0",
-        "path": "registry/curated/git",
-        "description": "Work with Git repositories from the command line.",
+        "path": "registry/curated/youtube-bot",
+        "description": "YouTube automation — video publishing, Shorts creation, community engagement, playlist management, and channel growth analytics.",
+        "category": "social-automation",
+        "namespace": "wunderland",
         "verified": true,
-        "verifiedAt": "2026-02-07T00:00:00.000Z",
-        "keywords": ["git", "vcs", "workflow"],
+        "source": "curated",
+        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "keywords": [
+          "youtube",
+          "video",
+          "shorts",
+          "social-media",
+          "content-creation",
+          "playlists",
+          "automation"
+        ],
+        "requiredSecrets": [
+          "youtube.apiKey",
+          "youtube.oauth2Token"
+        ],
+        "requiredTools": [
+          "youtubeUpload",
+          "youtubeShort",
+          "youtubeComment",
+          "youtubeSearch",
+          "youtubeTrending",
+          "youtubePlaylist",
+          "youtubeAnalytics",
+          "youtubeSchedule"
+        ],
         "metadata": {
-          "emoji": "\uD83E\uDDF0",
-          "requires": {
-            "bins": ["git"]
-          },
-          "install": [
-            {
-              "id": "brew",
-              "kind": "brew",
-              "formula": "git",
-              "bins": ["git"],
-              "label": "Install git (brew)"
-            },
-            {
-              "id": "apt",
-              "kind": "apt",
-              "package": "git",
-              "bins": ["git"],
-              "os": ["linux"],
-              "label": "Install git (apt)"
-            }
-          ]
+          "emoji": "🎬",
+          "primaryEnv": "YOUTUBE_API_KEY"
         }
       }
     ],
     "community": []
   },
   "stats": {
-    "totalSkills": 17,
-    "curatedCount": 17,
+    "totalSkills": 36,
+    "curatedCount": 36,
     "communityCount": 0
   }
 }

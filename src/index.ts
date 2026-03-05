@@ -180,12 +180,17 @@ export interface CuratedSkillsOptions {
 export interface SkillsCatalogEntry {
   id: string;
   name: string;
+  displayName?: string;
   version: string;
   path: string;
   description: string;
+  category?: string;
+  namespace?: string;
   verified: boolean;
   verifiedAt?: string;
   keywords?: string[];
+  requiredSecrets?: string[];
+  requiredTools?: string[];
   metadata?: Record<string, unknown>;
 }
 

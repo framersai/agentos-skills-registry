@@ -48,13 +48,18 @@ export interface SkillMetadata {
 export interface SkillRegistryEntry {
   id: string;
   name: string;
+  displayName?: string;
   version: string;
   path: string;
   description: string;
+  category?: string;
+  namespace?: string;
   verified: boolean;
   source?: 'curated' | 'community';
   verifiedAt?: string;
   keywords?: string[];
+  requiredSecrets?: string[];
+  requiredTools?: string[];
   metadata?: SkillMetadata;
 }
 

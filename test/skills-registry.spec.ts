@@ -1,9 +1,14 @@
 import { describe, it, expect } from 'vitest';
 
-import { searchSkills } from '../src/catalog';
+import { SKILLS_CATALOG, searchSkills } from '../src/catalog';
 import { createCuratedSkillSnapshot } from '../src/index';
+import registry from '../registry.json';
 
 describe('@framers/agentos-skills-registry', () => {
+  it('SKILLS_CATALOG stays in sync with curated registry entries', () => {
+    expect(SKILLS_CATALOG.length).toBe(registry.skills.curated.length);
+  });
+
   it('searchSkills finds github', () => {
     const matches = searchSkills('github');
     expect(matches.length).toBeGreaterThan(0);
@@ -17,4 +22,3 @@ describe('@framers/agentos-skills-registry', () => {
     expect(snapshot.skills.some((s) => s.name === 'github')).toBe(true);
   });
 });
-

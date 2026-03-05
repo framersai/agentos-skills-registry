@@ -1,13 +1,13 @@
 ---
 name: social-broadcast
 version: '1.0.0'
-description: Cross-platform content publishing — adapt a single piece of content for all social channels (Twitter, Instagram, Reddit, Pinterest, TikTok, YouTube, LinkedIn, Facebook, Threads, Bluesky, Mastodon, and blog platforms).
+description: Adapt one piece of content for major social channels and blogs: X, Instagram, Reddit, Pinterest, TikTok, YouTube, LinkedIn, Facebook, Threads, Bluesky, Mastodon, Farcaster, Lemmy, Google Business.
 author: Wunderland
 namespace: wunderland
 category: social-automation
 tags: [social-media, cross-platform, broadcasting, content-adaptation, multi-channel]
 requires_secrets: []
-requires_tools: [twitterPost, instagramPost, redditSubmitPost, pinterestPin, tiktokUpload, youtubeUpload, linkedinPost, facebookPost, threadsPost, blueskyPost, mastodonPost, blogPublishArticle, multiChannelPost]
+requires_tools: [twitterPost, instagramPost, redditSubmitPost, pinterestPin, tiktokUpload, youtubeUpload, linkedinPost, facebookPost, threadsPost, blueskyPost, mastodonPost, farcasterCast, lemmyPost, gbpCreatePost, blogPublishArticle, multiChannelPost]
 metadata:
   agentos:
     emoji: "\U0001F4E3"
@@ -94,12 +94,47 @@ You are a cross-platform content publishing agent. Given a single piece of conte
 - Alt text on all media
 - Use unlisted for reply threads
 
-### Blog Platforms (Dev.to / Hashnode / Medium / WordPress)
-- Long-form, well-structured markdown
-- SEO-optimized title and headings
-- Canonical URL for cross-posting
-- 4-6 relevant tags
-- Cover image recommended
+### Farcaster
+- Concise cast format (up to ~320 chars)
+- Include 1-2 relevant embeds (links/media) when helpful
+- Conversational tone that fits channel context
+- Use replies to continue threads rather than long single casts
+
+### Lemmy
+- Community-first posting: tailor tone and title per community rules
+- Use descriptive titles and structured markdown bodies
+- Prefer substantive text over hashtag-style posting
+- Link posts should include context in the body
+
+### Google Business Profile
+- Local, action-oriented updates (offers, events, announcements)
+- Keep copy short and clear with location-specific context
+- Include CTA language (call, visit, book, learn more)
+- Prioritize high-quality visual assets for local engagement
+
+### Dev.to
+- Long-form markdown with practical, developer-focused examples
+- Use 3-5 focused tags from Dev.to taxonomy
+- Prefer clear, actionable takeaways and code snippets
+- Add canonical URL when cross-posting
+
+### Hashnode
+- Technical depth with clean heading hierarchy (H2/H3)
+- Add publication-specific context if posting via publication account
+- Include canonical URL to avoid SEO duplication
+- Use concise, topic-accurate tags
+
+### Medium
+- Narrative flow and readability over dense formatting
+- Strong title/subtitle pairing and short intro hook
+- Use 4-6 broad-interest tags for discoverability
+- Keep paragraphs short and scannable
+
+### WordPress
+- SEO-oriented title, excerpt, and structured headings
+- Ensure slug/permalink is clean and keyword-relevant
+- Include featured image and metadata where available
+- Optimize outbound/internal links for site context
 
 ## Workflow
 

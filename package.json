@@ -36,6 +36,7 @@
     "build": "tsc",
     "clean": "rm -rf dist",
     "validate": "node scripts/validate-skill.mjs",
+    "update:registry": "node scripts/update-registry.mjs",
     "prepublishOnly": "npm run build",
     "test": "vitest run"
   },
@@ -73,6 +74,7 @@
     "@framers/agentos": "workspace:*",
     "@types/node": "^20.12.12",
     "typescript": "^5.4.5",
-    "vitest": "^1.0.0"
+    "vitest": "^1.0.0",
+    "yaml": "^2.8.1"
   }
 }
