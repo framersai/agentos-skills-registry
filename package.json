@@ -1,6 +1,6 @@
 {
   "name": "@framers/agentos-skills-registry",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "files": [
     "dist",
     "registry",
@@ -10,7 +10,7 @@
     "CONTRIBUTING.md",
     "README.md"
   ],
-  "description": "Curated skills registry for AgentOS — SKILL.md prompt modules, typed catalog, and lazy-loading factories",
+  "description": "Curated skills registry for AgentOS \u2014 SKILL.md prompt modules, typed catalog, and lazy-loading factories",
   "type": "module",
   "sideEffects": false,
   "main": "./dist/index.js",
