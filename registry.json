@@ -38,7 +38,9 @@
       "web-scraper",
       "web-search",
       "whisper-transcribe",
-      "youtube-bot"
+      "youtube-bot",
+      "site-deploy",
+      "cloud-ops"
     ],
     "community": []
   },
@@ -1376,13 +1378,49 @@
           "emoji": "🎬",
           "primaryEnv": "YOUTUBE_API_KEY"
         }
+      },
+      {
+        "id": "com.framers.skill.site-deploy",
+        "name": "site-deploy",
+        "displayName": "Site Deploy",
+        "version": "1.0.0",
+        "path": "registry/curated/site-deploy",
+        "description": "Deploy websites and applications to cloud providers with automatic domain registration and DNS configuration.",
+        "category": "infrastructure",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "keywords": ["deploy", "cloud", "hosting", "domain", "dns", "devops", "vercel", "cloudflare", "aws", "digitalocean", "netlify", "heroku", "railway", "flyio"],
+        "requiredSecrets": [],
+        "requiredTools": ["siteDeployOrchestrate"],
+        "metadata": {
+          "emoji": "🚀"
+        }
+      },
+      {
+        "id": "com.framers.skill.cloud-ops",
+        "name": "cloud-ops",
+        "displayName": "Cloud Operations",
+        "version": "1.0.0",
+        "path": "registry/curated/cloud-ops",
+        "description": "Manage cloud infrastructure — monitor deployments, scale resources, manage databases, and handle domain operations across all supported providers.",
+        "category": "infrastructure",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "keywords": ["cloud", "devops", "infrastructure", "monitoring", "scaling", "database", "dns", "ops"],
+        "requiredSecrets": [],
+        "requiredTools": [],
+        "metadata": {
+          "emoji": "☁️"
+        }
       }
     ],
     "community": []
   },
   "stats": {
-    "totalSkills": 36,
-    "curatedCount": 36,
+    "totalSkills": 38,
+    "curatedCount": 38,
     "communityCount": 0
   }
 }
