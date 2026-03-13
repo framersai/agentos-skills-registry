@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated": "2026-03-05T06:35:42.604Z",
+  "updated": "2026-03-13T09:41:27.511Z",
   "categories": {
     "curated": [
       "1password",
@@ -9,6 +9,7 @@
       "apple-reminders",
       "blog-publisher",
       "bluesky-bot",
+      "cloud-ops",
       "coding-agent",
       "content-creator",
       "deep-research",
@@ -21,11 +22,13 @@
       "instagram-bot",
       "linkedin-bot",
       "mastodon-bot",
+      "memory-manager",
       "notion",
       "obsidian",
       "pinterest-bot",
       "reddit-bot",
       "seo-campaign",
+      "site-deploy",
       "slack-helper",
       "social-broadcast",
       "spotify-player",
@@ -38,9 +41,7 @@
       "web-scraper",
       "web-search",
       "whisper-transcribe",
-      "youtube-bot",
-      "site-deploy",
-      "cloud-ops"
+      "youtube-bot"
     ],
     "community": []
   },
@@ -57,7 +58,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "1password",
           "passwords",
@@ -102,7 +103,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "accounts",
           "credentials",
@@ -138,7 +139,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "apple-notes",
           "macos",
@@ -172,7 +173,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "apple-reminders",
           "macos",
@@ -207,7 +208,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "blog",
           "publishing",
@@ -251,7 +252,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "bluesky",
           "social-media",
@@ -281,6 +282,33 @@
         }
       },
       {
+        "id": "com.framers.skill.cloud-ops",
+        "name": "cloud-ops",
+        "displayName": "cloud-ops",
+        "version": "1.0.0",
+        "path": "registry/curated/cloud-ops",
+        "description": "Manage cloud infrastructure — monitor deployments, scale resources, manage databases, and handle domain operations across all supported providers.",
+        "category": "infrastructure",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
+        "keywords": [
+          "cloud",
+          "devops",
+          "infrastructure",
+          "monitoring",
+          "scaling",
+          "database",
+          "dns",
+          "ops"
+        ],
+        "metadata": {
+          "emoji": "☁",
+          "homepage": "https://wunderland.sh/docs/skills/cloud-ops"
+        }
+      },
+      {
         "id": "com.framers.skill.coding-agent",
         "name": "coding-agent",
         "displayName": "coding-agent",
@@ -291,7 +319,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "coding",
           "programming",
@@ -318,7 +346,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "content",
           "writing",
@@ -348,7 +376,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "research",
           "investigation",
@@ -386,7 +414,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "discord",
           "messaging",
@@ -414,7 +442,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "facebook",
           "social-media",
@@ -453,7 +481,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "git",
           "version-control",
@@ -507,7 +535,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "github",
           "git",
@@ -566,7 +594,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "monitoring",
           "health",
@@ -599,7 +627,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "image-generation",
           "ai-art",
@@ -628,7 +656,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "instagram",
           "social-media",
@@ -666,7 +694,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "linkedin",
           "social-media",
@@ -704,7 +732,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "mastodon",
           "fediverse",
@@ -734,6 +762,30 @@
         }
       },
       {
+        "id": "com.framers.skill.memory-manager",
+        "name": "memory-manager",
+        "displayName": "memory-manager",
+        "version": "1.0.0",
+        "path": "registry/curated/memory-manager",
+        "description": "Cognitive memory management — encode, recall, forget, set reminders, and maintain long-term knowledge using personality-modulated memory.",
+        "category": "productivity",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
+        "keywords": [
+          "memory",
+          "cognitive",
+          "recall",
+          "reminders",
+          "knowledge-management",
+          "personality"
+        ],
+        "metadata": {
+          "emoji": "🧠"
+        }
+      },
+      {
         "id": "com.framers.skill.notion",
         "name": "notion",
         "displayName": "notion",
@@ -744,7 +796,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "notion",
           "wiki",
@@ -773,7 +825,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "obsidian",
           "markdown",
@@ -801,7 +853,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "pinterest",
           "social-media",
@@ -838,7 +890,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "reddit",
           "social-media",
@@ -879,7 +931,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "seo",
           "link-building",
@@ -904,6 +956,42 @@
         }
       },
       {
+        "id": "com.framers.skill.site-deploy",
+        "name": "site-deploy",
+        "displayName": "site-deploy",
+        "version": "1.0.0",
+        "path": "registry/curated/site-deploy",
+        "description": "Deploy websites and applications to cloud providers with automatic domain registration and DNS configuration.",
+        "category": "infrastructure",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
+        "keywords": [
+          "deploy",
+          "cloud",
+          "hosting",
+          "domain",
+          "dns",
+          "devops",
+          "vercel",
+          "cloudflare",
+          "aws",
+          "digitalocean",
+          "netlify",
+          "heroku",
+          "railway",
+          "flyio"
+        ],
+        "requiredTools": [
+          "siteDeployOrchestrate"
+        ],
+        "metadata": {
+          "emoji": "🚀",
+          "homepage": "https://wunderland.sh/docs/skills/site-deploy"
+        }
+      },
+      {
         "id": "com.framers.skill.slack-helper",
         "name": "slack-helper",
         "displayName": "slack-helper",
@@ -914,7 +1002,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "slack",
           "messaging",
@@ -938,43 +1026,15 @@
       {
         "id": "com.framers.skill.social-broadcast",
         "name": "social-broadcast",
-        "displayName": "social-broadcast",
+        "displayName": "Social Broadcast",
         "version": "1.0.0",
         "path": "registry/curated/social-broadcast",
-        "description": "Cross-platform content publishing — adapt a single piece of content for all social channels (Twitter, Instagram, Reddit, Pinterest, TikTok, YouTube, LinkedIn, Facebook, Threads, Bluesky, Mastodon, Farcaster, Lemmy, Google Business, and blog platforms).",
-        "category": "social-automation",
+        "description": "",
+        "category": "uncategorized",
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
-        "keywords": [
-          "social-media",
-          "cross-platform",
-          "broadcasting",
-          "content-adaptation",
-          "multi-channel"
-        ],
-        "requiredTools": [
-          "twitterPost",
-          "instagramPost",
-          "redditSubmitPost",
-          "pinterestPin",
-          "tiktokUpload",
-          "youtubeUpload",
-          "linkedinPost",
-          "facebookPost",
-          "threadsPost",
-          "blueskyPost",
-          "mastodonPost",
-          "farcasterCast",
-          "lemmyPost",
-          "gbpCreatePost",
-          "blogPublishArticle",
-          "multiChannelPost"
-        ],
-        "metadata": {
-          "emoji": "📣"
-        }
+        "verifiedAt": "2026-03-13T09:41:27.511Z"
       },
       {
         "id": "com.framers.skill.spotify-player",
@@ -987,7 +1047,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "spotify",
           "music",
@@ -1022,7 +1082,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "summarization",
           "text-processing",
@@ -1048,7 +1108,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "threads",
           "social-media",
@@ -1084,7 +1144,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "tiktok",
           "video",
@@ -1121,7 +1181,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "trello",
           "kanban",
@@ -1154,7 +1214,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "twitter",
           "social-media",
@@ -1197,7 +1257,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "weather",
           "forecast",
@@ -1223,7 +1283,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "scraping",
           "browser",
@@ -1260,7 +1320,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "search",
           "web",
@@ -1287,7 +1347,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "transcription",
           "whisper",
@@ -1350,7 +1410,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-05T06:35:42.604Z",
+        "verifiedAt": "2026-03-13T09:41:27.511Z",
         "keywords": [
           "youtube",
           "video",
@@ -1378,49 +1438,13 @@
           "emoji": "🎬",
           "primaryEnv": "YOUTUBE_API_KEY"
         }
-      },
-      {
-        "id": "com.framers.skill.site-deploy",
-        "name": "site-deploy",
-        "displayName": "Site Deploy",
-        "version": "1.0.0",
-        "path": "registry/curated/site-deploy",
-        "description": "Deploy websites and applications to cloud providers with automatic domain registration and DNS configuration.",
-        "category": "infrastructure",
-        "namespace": "wunderland",
-        "verified": true,
-        "source": "curated",
-        "keywords": ["deploy", "cloud", "hosting", "domain", "dns", "devops", "vercel", "cloudflare", "aws", "digitalocean", "netlify", "heroku", "railway", "flyio"],
-        "requiredSecrets": [],
-        "requiredTools": ["siteDeployOrchestrate"],
-        "metadata": {
-          "emoji": "🚀"
-        }
-      },
-      {
-        "id": "com.framers.skill.cloud-ops",
-        "name": "cloud-ops",
-        "displayName": "Cloud Operations",
-        "version": "1.0.0",
-        "path": "registry/curated/cloud-ops",
-        "description": "Manage cloud infrastructure — monitor deployments, scale resources, manage databases, and handle domain operations across all supported providers.",
-        "category": "infrastructure",
-        "namespace": "wunderland",
-        "verified": true,
-        "source": "curated",
-        "keywords": ["cloud", "devops", "infrastructure", "monitoring", "scaling", "database", "dns", "ops"],
-        "requiredSecrets": [],
-        "requiredTools": [],
-        "metadata": {
-          "emoji": "☁️"
-        }
       }
     ],
     "community": []
   },
   "stats": {
-    "totalSkills": 38,
-    "curatedCount": 38,
+    "totalSkills": 39,
+    "curatedCount": 39,
     "communityCount": 0
   }
 }
