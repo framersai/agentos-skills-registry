@@ -88,14 +88,20 @@ npm run validate registry/community/my-skill/SKILL.md
 
 ### Valid Categories
 
-- `information` — Data lookup, search, knowledge retrieval
-- `developer-tools` — Code, repos, CI/CD, debugging
+- `automation` — Workflow automation, orchestration, repetitive task handling
 - `communication` — Chat, email, messaging platforms
-- `productivity` — Note-taking, task management, organization
-- `devops` — Infrastructure, monitoring, deployment
-- `media` — Audio, video, image, streaming
-- `security` — Passwords, encryption, access control
+- `content` — Content planning, drafting, publishing pipelines
 - `creative` — Art, writing, design, generation
+- `developer-tools` — Code, repos, CI/CD, debugging
+- `devops` — Operational tooling, monitoring, reliability checks
+- `information` — Data lookup, search, knowledge retrieval
+- `infrastructure` — Infrastructure provisioning, hosting, deployment workflows
+- `marketing` — SEO, campaigns, growth workflows
+- `media` — Audio, video, image, streaming
+- `productivity` — Note-taking, task management, organization
+- `research` — Multi-source investigation and synthesis
+- `security` — Passwords, encryption, access control
+- `social-automation` — Social publishing, engagement, and channel management
 
 ### Full Template
 

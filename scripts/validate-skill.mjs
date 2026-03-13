@@ -19,14 +19,20 @@ import { resolve, basename, dirname, join } from 'node:path';
 // ---------------------------------------------------------------------------
 
 const VALID_CATEGORIES = new Set([
-  'information',
-  'developer-tools',
+  'automation',
   'communication',
-  'productivity',
-  'devops',
-  'media',
-  'security',
+  'content',
   'creative',
+  'developer-tools',
+  'devops',
+  'information',
+  'infrastructure',
+  'marketing',
+  'media',
+  'productivity',
+  'research',
+  'security',
+  'social-automation',
 ]);
 
 const VALID_NAMESPACES = new Set(['wunderland', 'community']);
