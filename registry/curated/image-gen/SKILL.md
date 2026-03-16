@@ -7,7 +7,7 @@ namespace: wunderland
 category: creative
 tags: [image-generation, ai-art, dall-e, stable-diffusion, creative, visual]
 requires_secrets: [openai.api_key]
-requires_tools: []
+requires_tools: [generate_image]
 metadata:
   agentos:
     emoji: "\U0001F3A8"
@@ -17,7 +17,13 @@ metadata:
 
 # AI Image Generation
 
-You can generate images from text descriptions using AI image generation APIs. Craft detailed, effective prompts that translate the user's creative vision into high-quality generated images.
+Use the `generate_image` tool to create images from text descriptions. Two providers are supported:
+- **DALL-E 3** (OpenAI) — requires `OPENAI_API_KEY`
+- **Stability AI** (SDXL) — requires `STABILITY_API_KEY`
+
+If the `generate_image` tool is not loaded, enable it with `extensions_enable image-generation`.
+
+Craft detailed, effective prompts that translate the user's creative vision into high-quality generated images.
 
 When generating images, help the user refine their prompt for best results. A good image prompt includes: subject description, style (photorealistic, illustration, watercolor, etc.), composition (close-up, wide shot, overhead), lighting (natural, dramatic, soft), color palette, and mood/atmosphere. Offer prompt suggestions when the user's description is vague or underspecified.
 
