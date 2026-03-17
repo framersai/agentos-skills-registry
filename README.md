@@ -1,7 +1,7 @@
 <p align="center">
-  <a href="https://agentos.sh"><img src="https://raw.githubusercontent.com/manicinc/voice-chat-assistant/master/logos/agentos-primary-no-tagline-transparent-2x.png" alt="AgentOS" height="56" /></a>
+  <a href="https://agentos.sh"><img src="logos/agentos-primary-no-tagline-transparent-2x.png" alt="AgentOS" height="56" /></a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://frame.dev"><img src="https://raw.githubusercontent.com/manicinc/voice-chat-assistant/master/logos/frame-logo-green-no-tagline.svg" alt="Frame.dev" height="36" /></a>
+  <a href="https://frame.dev"><img src="logos/frame-logo-green-no-tagline.svg" alt="Frame.dev" height="36" /></a>
 </p>
 
 # @framers/agentos-skills-registry
