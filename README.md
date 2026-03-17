@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://agentos.sh"><img src="https://raw.githubusercontent.com/manicinc/voice-chat-assistant/master/logos/agentos-primary-no-tagline-transparent-2x.png" alt="AgentOS" height="56" /></a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://frame.dev"><img src="https://raw.githubusercontent.com/manicinc/voice-chat-assistant/master/logos/frame-logo-green-no-tagline.svg" alt="Frame.dev" height="36" /></a>
+</p>
+
 # @framers/agentos-skills-registry
 
 Curated skills registry for [AgentOS](https://github.com/framersai/agentos) — 40 SKILL.md prompt modules, typed catalog, and lazy-loading factories.
@@ -20,7 +26,7 @@ This is the **single package** for AgentOS skills. It contains:
 
 ## Quick Start
 
-### 1. Browse the catalog (zero deps)
+### 1. Browse the catalog (zero peer deps)
 
 The `./catalog` sub-export has no peer dependencies:
 
@@ -85,10 +91,16 @@ import {
   createCuratedSkillRegistry,
   createCuratedSkillSnapshot,
   getBundledCuratedSkillsDir,
+  loadSkillByName,
 } from '@framers/agentos-skills-registry';
 
 // Option A: Create a live SkillRegistry loaded with all curated skills
 const registry = await createCuratedSkillRegistry();
+
+// Or load only a specific curated subset
+const selectedRegistry = await createCuratedSkillRegistry({
+  skills: ['github', 'weather'],
+});
 
 // Option B: Build a prompt snapshot for specific skills
 const snapshot = await createCuratedSkillSnapshot({
@@ -96,10 +108,19 @@ const snapshot = await createCuratedSkillSnapshot({
   platform: 'darwin',
 });
 
+// Only the selected skills are loaded when you pass an explicit list.
+console.log(snapshot.skills.map((skill) => skill.name));
+// ['github', 'weather', 'notion']
+
 // Inject the snapshot prompt into your agent's system message
 const systemPrompt = `You are an AI assistant.\n\n${snapshot.prompt}`;
 
-// Option C: Get the directory path and load manually
+// Option C: Load a single SKILL.md lazily with parsed metadata
+const githubSkill = await loadSkillByName('github');
+console.log(githubSkill?.metadata?.primaryEnv); // 'GITHUB_TOKEN'
+console.log(githubSkill?.frontmatter.requires_tools); // ['filesystem']
+
+// Option D: Get the directory path and load manually
 const skillsDir = getBundledCuratedSkillsDir();
 // → '/path/to/node_modules/@framers/agentos-skills-registry/registry/curated'
 ```
@@ -127,6 +148,11 @@ const valid = skillNames.filter((name) => {
 // Build snapshot with only validated skills
 const snapshot = await createCuratedSkillSnapshot({ skills: valid });
 ```
+
+When `skills` is a string array, the registry only loads those specific `SKILL.md`
+files before building the snapshot. It does not walk the full curated bundle first.
+Loaded skills also include parsed `metadata` so consumers do not need to decode
+the `metadata.agentos` block manually.
 
 ## Two Import Paths
 
@@ -182,7 +208,7 @@ import type {
 | Export path | Contents |
 |-------------|----------|
 | `.` | Full SDK: catalog helpers + factory functions + schema types |
-| `./catalog` | Lightweight: `SKILLS_CATALOG`, query helpers (zero deps) |
+| `./catalog` | Lightweight: `SKILLS_CATALOG`, query helpers (zero peer deps) |
 | `./registry.json` | Raw JSON index of all skills |
 | `./types` | TypeScript declarations for registry.json schema |
 
