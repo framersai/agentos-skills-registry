@@ -12,12 +12,17 @@
 
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
-import type { SkillCatalogEntry } from './catalog.js';
+import YAML from 'yaml';
+import {
+  loadSkillFromAbsolutePath,
+  type LoadedSkillFrontmatter,
+  type SkillCatalogEntry,
+} from './catalog.js';
 
 // ── Frontmatter types ───────────────────────────────────────────────────────
 
 /** Raw frontmatter fields extracted from a workspace SKILL.md */
-export interface SkillFrontmatter {
+export interface SkillFrontmatter extends LoadedSkillFrontmatter {
   name: string;
   version?: string;
   description?: string;
@@ -48,14 +53,7 @@ export interface WorkspaceDiscoveryOptions {
 // ── Frontmatter parser ──────────────────────────────────────────────────────
 
 /**
- * Lightweight YAML frontmatter parser.
- *
- * Handles the subset of YAML used in SKILL.md frontmatter:
- *   - scalar key: value pairs
- *   - inline arrays  [a, b, c]
- *   - block arrays   (- item)
- *
- * Does NOT pull in a full YAML dependency — keeps the package lightweight.
+ * YAML frontmatter parser for workspace SKILL.md files.
  */
 export function parseSkillFrontmatter(content: string): SkillFrontmatter | null {
   // Extract frontmatter block between leading --- fences
@@ -63,67 +61,15 @@ export function parseSkillFrontmatter(content: string): SkillFrontmatter | null 
   if (!match) return null;
 
   const block = match[1];
-  const result: Record<string, unknown> = {};
-
-  const lines = block.split('\n');
-  let i = 0;
-
-  while (i < lines.length) {
-    const line = lines[i];
-
-    // Skip blank lines and deep-nested keys (metadata sub-objects)
-    if (!line.trim() || /^\s{2,}\S/.test(line)) {
-      i++;
-      continue;
-    }
-
-    const kvMatch = line.match(/^(\w[\w_-]*)\s*:\s*(.*)/);
-    if (!kvMatch) {
-      i++;
-      continue;
-    }
-
-    const key = kvMatch[1];
-    let rawValue = kvMatch[2].trim();
-
-    // Inline array: [a, b, c]
-    if (rawValue.startsWith('[') && rawValue.endsWith(']')) {
-      const inner = rawValue.slice(1, -1);
-      result[key] = inner
-        ? inner.split(',').map((s) => s.trim().replace(/^['"]|['"]$/g, ''))
-        : [];
-      i++;
-      continue;
-    }
-
-    // Block array: subsequent lines starting with "- "
-    if (rawValue === '' || rawValue === '[]') {
-      const items: string[] = [];
-      let j = i + 1;
-      while (j < lines.length) {
-        const next = lines[j];
-        const itemMatch = next.match(/^\s+-\s+(.*)/);
-        if (!itemMatch) break;
-        items.push(itemMatch[1].trim().replace(/^['"]|['"]$/g, ''));
-        j++;
-      }
-      if (items.length > 0) {
-        result[key] = items;
-        i = j;
-        continue;
-      }
-      // Empty array literal
-      if (rawValue === '[]') {
-        result[key] = [];
-        i++;
-        continue;
-      }
-    }
-
-    // Scalar value — strip surrounding quotes
-    result[key] = rawValue.replace(/^['"]|['"]$/g, '');
-    i++;
+  let parsed: unknown;
+  try {
+    parsed = YAML.parse(block);
+  } catch {
+    return null;
   }
+
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return null;
+  const result = parsed as SkillFrontmatter;
 
   // name is required
   if (typeof result.name !== 'string' || !result.name) return null;
@@ -156,39 +102,7 @@ function createAbsoluteSkillLoader(
   absolutePath: string,
   displayName: string,
 ): () => Promise<import('./catalog.js').LoadedSkill> {
-  // Workspace skills use absolute paths, but createLocalSkillProxy resolves
-  // relative to package root. Instead, build the loader inline for absolute paths.
-  return async () => {
-    const { readFile } = await import('node:fs/promises');
-
-    let content: string;
-    try {
-      content = await readFile(absolutePath, 'utf-8');
-    } catch (err) {
-      throw new Error(
-        `Failed to load workspace SKILL.md at ${absolutePath}: ${err instanceof Error ? err.message : String(err)}`
-      );
-    }
-
-    // Use the lightweight built-in parser from catalog.ts via re-parse
-    const parsed = parseSkillFrontmatter(content);
-    const body = content.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '').trim();
-
-    const name = parsed?.name ?? path.basename(path.dirname(absolutePath));
-    const description =
-      parsed?.description ??
-      body.split('\n').find((l) => l.trim() && !l.startsWith('#'))?.trim() ??
-      '';
-
-    return {
-      name,
-      displayName,
-      description,
-      content: body,
-      frontmatter: (parsed ?? {}) as Record<string, unknown>,
-      sourcePath: absolutePath,
-    };
-  };
+  return async () => loadSkillFromAbsolutePath(absolutePath, displayName);
 }
 
 /**

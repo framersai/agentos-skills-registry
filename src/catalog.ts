@@ -14,7 +14,8 @@
 import * as path from 'node:path';
 import * as fs from 'node:fs/promises';
 import { createRequire } from 'node:module';
-import type { SkillRegistryEntry, SkillsRegistry } from './schema-types.js';
+import YAML from 'yaml';
+import type { SkillMetadata, SkillRegistryEntry, SkillsRegistry } from './schema-types.js';
 
 // ============================================================================
 // TYPES
@@ -40,10 +41,30 @@ export interface LoadedSkill {
   content: string;
 
   /** Raw parsed frontmatter key/value pairs */
-  frontmatter: Record<string, unknown>;
+  frontmatter: LoadedSkillFrontmatter;
+
+  /** Parsed metadata extracted from frontmatter (when available) */
+  metadata?: SkillMetadata;
 
   /** Absolute path to the SKILL.md file that was loaded */
   sourcePath: string;
+}
+
+export interface LoadedSkillFrontmatter extends Record<string, unknown> {
+  name?: string;
+  version?: string;
+  description?: string;
+  author?: string;
+  namespace?: string;
+  category?: string;
+  tags?: string[];
+  requires_secrets?: string[];
+  requires_tools?: string[];
+  metadata?: unknown;
+  userInvocable?: boolean | string;
+  'user-invocable'?: boolean | string;
+  disableModelInvocation?: boolean | string;
+  'disable-model-invocation'?: boolean | string;
 }
 
 export interface SkillCatalogEntry {
@@ -107,14 +128,15 @@ function resolvePackageRoot(): string {
 /** Resolved module cache for @framers/agentos SkillLoader — loaded at most once. */
 let _skillLoaderMod: {
   parseSkillFrontmatter: (content: string) => {
-    frontmatter: Record<string, unknown>;
+    frontmatter: LoadedSkillFrontmatter;
     body: string;
   };
+  extractMetadata?: (frontmatter: LoadedSkillFrontmatter) => SkillMetadata | undefined;
 } | null = null;
 
 /**
  * Attempt to lazily import the SkillLoader from @framers/agentos.
- * Falls back to a lightweight built-in parser if the peer dep is unavailable.
+ * Falls back to a local YAML-backed parser if the peer dep is unavailable.
  */
 async function getSkillParser(): Promise<NonNullable<typeof _skillLoaderMod>> {
   if (_skillLoaderMod) return _skillLoaderMod;
@@ -123,24 +145,26 @@ async function getSkillParser(): Promise<NonNullable<typeof _skillLoaderMod>> {
     const mod = await import('@framers/agentos/skills');
     _skillLoaderMod = {
       parseSkillFrontmatter: (mod as any).parseSkillFrontmatter,
+      extractMetadata: (mod as any).extractMetadata,
     };
     return _skillLoaderMod;
   } catch {
-    // Fallback: lightweight YAML frontmatter parser (no heavy deps)
+    // Fallback: local YAML-backed frontmatter parser.
     _skillLoaderMod = {
       parseSkillFrontmatter: builtinParseSkillFrontmatter,
+      extractMetadata: extractLoadedSkillMetadata,
     };
     return _skillLoaderMod;
   }
 }
 
 /**
- * Built-in lightweight frontmatter parser used when @framers/agentos is not
- * installed. Handles the standard `---` delimited YAML frontmatter format
- * with simple key: value pairs and arrays.
+ * Built-in frontmatter parser used when @framers/agentos is not installed.
+ * Uses the same YAML parser family as the standalone skills runtime so nested
+ * metadata blocks keep working even without the peer dependency.
  */
 function builtinParseSkillFrontmatter(content: string): {
-  frontmatter: Record<string, unknown>;
+  frontmatter: LoadedSkillFrontmatter;
   body: string;
 } {
   const normalized = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
@@ -165,65 +189,113 @@ function builtinParseSkillFrontmatter(content: string): {
   const frontmatterBlock = lines.slice(1, endIndex).join('\n');
   const body = lines.slice(endIndex + 1).join('\n').trim();
 
-  const result: Record<string, unknown> = {};
-  const fmLines = frontmatterBlock.split('\n');
-  let i = 0;
-
-  while (i < fmLines.length) {
-    const line = fmLines[i];
-    if (!line.trim() || /^\s{2,}\S/.test(line)) {
-      i++;
-      continue;
+  try {
+    const parsed = YAML.parse(frontmatterBlock) as unknown;
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+      return { frontmatter: {}, body };
     }
+    return { frontmatter: parsed as LoadedSkillFrontmatter, body };
+  } catch {
+    return { frontmatter: {}, body };
+  }
+}
 
-    const kvMatch = line.match(/^(\w[\w_-]*)\s*:\s*(.*)/);
-    if (!kvMatch) {
-      i++;
-      continue;
+export function extractLoadedSkillMetadata(
+  frontmatter: LoadedSkillFrontmatter,
+): SkillMetadata | undefined {
+  const metadataValue = frontmatter.metadata;
+  let meta: unknown;
+
+  if (metadataValue && typeof metadataValue === 'object') {
+    const metadataObject = metadataValue as Record<string, unknown>;
+    meta =
+      metadataObject.agentos ??
+      metadataObject.wunderland ??
+      metadataObject.openclaw ??
+      metadataObject;
+  } else if (typeof metadataValue === 'string' && metadataValue.trim()) {
+    try {
+      meta = JSON.parse(metadataValue);
+    } catch {
+      meta = undefined;
     }
-
-    const key = kvMatch[1];
-    const rawValue = kvMatch[2].trim();
-
-    // Inline array: [a, b, c]
-    if (rawValue.startsWith('[') && rawValue.endsWith(']')) {
-      const inner = rawValue.slice(1, -1);
-      result[key] = inner
-        ? inner.split(',').map((s) => s.trim().replace(/^['"]|['"]$/g, ''))
-        : [];
-      i++;
-      continue;
-    }
-
-    // Block array or empty value
-    if (rawValue === '' || rawValue === '[]') {
-      const items: string[] = [];
-      let j = i + 1;
-      while (j < fmLines.length) {
-        const next = fmLines[j];
-        const itemMatch = next.match(/^\s+-\s+(.*)/);
-        if (!itemMatch) break;
-        items.push(itemMatch[1].trim().replace(/^['"]|['"]$/g, ''));
-        j++;
-      }
-      if (items.length > 0) {
-        result[key] = items;
-        i = j;
-        continue;
-      }
-      if (rawValue === '[]') {
-        result[key] = [];
-        i++;
-        continue;
-      }
-    }
-
-    // Scalar value
-    result[key] = rawValue.replace(/^['"]|['"]$/g, '');
-    i++;
   }
 
-  return { frontmatter: result, body };
+  if (!meta) {
+    meta = frontmatter;
+  }
+
+  if (!meta || typeof meta !== 'object' || Array.isArray(meta)) {
+    return undefined;
+  }
+
+  const metadata = meta as Record<string, unknown>;
+
+  return {
+    always: metadata.always === true,
+    skillKey: typeof metadata.skillKey === 'string' ? metadata.skillKey : undefined,
+    primaryEnv: typeof metadata.primaryEnv === 'string' ? metadata.primaryEnv : undefined,
+    emoji: typeof metadata.emoji === 'string' ? metadata.emoji : undefined,
+    homepage: typeof metadata.homepage === 'string' ? metadata.homepage : undefined,
+    os: Array.isArray(metadata.os) ? metadata.os.filter((value): value is string => typeof value === 'string') : undefined,
+    requires:
+      metadata.requires && typeof metadata.requires === 'object' && !Array.isArray(metadata.requires)
+        ? (metadata.requires as SkillMetadata['requires'])
+        : undefined,
+    install: Array.isArray(metadata.install)
+      ? (metadata.install as SkillMetadata['install'])
+      : undefined,
+  };
+}
+
+async function loadSkillFromContent(args: {
+  absolutePath: string;
+  content: string;
+  displayName: string;
+}): Promise<LoadedSkill> {
+  const parser = await getSkillParser();
+  const { frontmatter, body } = parser.parseSkillFrontmatter(args.content);
+  const metadata = parser.extractMetadata?.(frontmatter) ?? extractLoadedSkillMetadata(frontmatter);
+
+  const name =
+    typeof frontmatter.name === 'string' && frontmatter.name.trim()
+      ? frontmatter.name.trim()
+      : path.basename(path.dirname(args.absolutePath));
+
+  const description =
+    typeof frontmatter.description === 'string' && frontmatter.description.trim()
+      ? frontmatter.description.trim()
+      : body.split('\n').find((line) => line.trim() && !line.startsWith('#'))?.trim() ?? '';
+
+  return {
+    name,
+    displayName: args.displayName,
+    description,
+    content: body,
+    frontmatter,
+    metadata,
+    sourcePath: args.absolutePath,
+  };
+}
+
+export async function loadSkillFromAbsolutePath(
+  absolutePath: string,
+  displayName: string,
+): Promise<LoadedSkill> {
+  let content: string;
+  try {
+    content = await fs.readFile(absolutePath, 'utf-8');
+  } catch (err) {
+    throw new Error(
+      `Failed to load SKILL.md at ${absolutePath}: ${err instanceof Error ? err.message : String(err)}`
+    );
+  }
+
+  return loadSkillFromContent({
+    absolutePath,
+    content,
+    displayName,
+  });
 }
 
 /**
@@ -240,40 +312,7 @@ export function createLocalSkillProxy(
   relativePath: string,
   displayName: string,
 ): () => Promise<LoadedSkill> {
-  return async () => {
-    const absolutePath = path.resolve(resolvePackageRoot(), relativePath);
-
-    let content: string;
-    try {
-      content = await fs.readFile(absolutePath, 'utf-8');
-    } catch (err) {
-      throw new Error(
-        `Failed to load SKILL.md at ${absolutePath}: ${err instanceof Error ? err.message : String(err)}`
-      );
-    }
-
-    const parser = await getSkillParser();
-    const { frontmatter, body } = parser.parseSkillFrontmatter(content);
-
-    const name =
-      typeof frontmatter.name === 'string' && frontmatter.name.trim()
-        ? frontmatter.name.trim()
-        : path.basename(path.dirname(absolutePath));
-
-    const description =
-      typeof frontmatter.description === 'string' && frontmatter.description.trim()
-        ? frontmatter.description.trim()
-        : body.split('\n').find((l) => l.trim() && !l.startsWith('#'))?.trim() ?? '';
-
-    return {
-      name,
-      displayName,
-      description,
-      content: body,
-      frontmatter,
-      sourcePath: absolutePath,
-    };
-  };
+  return async () => loadSkillFromAbsolutePath(path.resolve(resolvePackageRoot(), relativePath), displayName);
 }
 
 // ============================================================================

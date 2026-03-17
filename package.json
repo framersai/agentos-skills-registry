@@ -62,6 +62,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "yaml": "^2.8.1"
+  },
   "peerDependencies": {
     "@framers/agentos": ">=0.1.0"
   },
@@ -71,10 +74,9 @@
     }
   },
   "devDependencies": {
-    "@framers/agentos": "workspace:*",
+    "@framers/agentos": ">=0.1.0",
     "@types/node": "^20.12.12",
     "typescript": "^5.4.5",
-    "vitest": "^1.0.0",
-    "yaml": "^2.8.1"
+    "vitest": "^1.0.0"
   }
 }

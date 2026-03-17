@@ -69,10 +69,18 @@ export {
   getAllSkills,
   getSkillEntries,
   createLocalSkillProxy,
+  loadSkillFromAbsolutePath,
   loadSkillByName,
   loadSkillsByNames,
 } from './catalog.js';
-export type { SkillCatalogEntry, LoadedSkill } from './catalog.js';
+export type { SkillCatalogEntry, LoadedSkill, LoadedSkillFrontmatter } from './catalog.js';
+import {
+  getSkillEntries,
+  loadSkillsByNames,
+  type LoadedSkill,
+  type LoadedSkillFrontmatter,
+} from './catalog.js';
+import type { SkillMetadata } from './schema-types.js';
 
 // ── Re-export workspace skill discovery (Feature 3.5) ───────────────────────
 
@@ -103,6 +111,13 @@ export type {
 /** Resolved module cache — loaded at most once per process. */
 let _agentosSkillsMod: {
   SkillRegistry: new (config?: SkillsConfig) => {
+    register(entry: {
+      skill: { name: string; description: string; content: string };
+      frontmatter: LoadedSkillFrontmatter;
+      metadata?: SkillMetadata;
+      sourcePath?: string;
+      source?: string;
+    }): boolean;
     loadFromDirs(dirs: string[]): Promise<number>;
     loadFromDir?(dir: string, options?: { source?: string }): Promise<number>;
     buildSnapshot(options?: {
@@ -113,6 +128,7 @@ let _agentosSkillsMod: {
       runtimeConfig?: Record<string, unknown>;
     }): SkillSnapshot;
   };
+  extractMetadata?: (frontmatter: LoadedSkillFrontmatter) => SkillMetadata | undefined;
 } | null = null;
 
 async function requireAgentOS(): Promise<NonNullable<typeof _agentosSkillsMod>> {
@@ -195,7 +211,7 @@ export interface SkillsCatalogEntry {
   keywords?: string[];
   requiredSecrets?: string[];
   requiredTools?: string[];
-  metadata?: Record<string, unknown>;
+  metadata?: SkillMetadata;
 }
 
 export interface SkillsCatalog {
@@ -227,6 +243,29 @@ export async function getAvailableCuratedSkills(): Promise<SkillsCatalogEntry[]>
 
 // ── Factory functions (lazy-load @framers/agentos) ──────────────────────────
 
+async function populateCuratedRegistry(args: {
+  registry: InstanceType<Awaited<ReturnType<typeof requireAgentOS>>['SkillRegistry']>;
+  runtime: Awaited<ReturnType<typeof requireAgentOS>>;
+  selection: CuratedSkillsSelection;
+}): Promise<void> {
+  const names = getSkillEntries(args.selection).map((entry) => entry.name);
+  const loadedSkills = await loadSkillsByNames(names);
+
+  for (const loadedSkill of loadedSkills) {
+    args.registry.register({
+      skill: {
+        name: loadedSkill.name,
+        description: loadedSkill.description,
+        content: loadedSkill.content,
+      },
+      frontmatter: loadedSkill.frontmatter,
+      metadata: loadedSkill.metadata ?? args.runtime.extractMetadata?.(loadedSkill.frontmatter),
+      sourcePath: path.dirname(loadedSkill.sourcePath),
+      source: 'bundled',
+    });
+  }
+}
+
 /**
  * Create a SkillRegistry loaded with bundled curated skills.
  *
@@ -234,15 +273,20 @@ export async function getAvailableCuratedSkills(): Promise<SkillsCatalogEntry[]>
  * Throws a descriptive error if the peer dep is missing.
  */
 export async function createCuratedSkillRegistry(
-  options?: Pick<CuratedSkillsOptions, 'config'>
+  options?: Pick<CuratedSkillsOptions, 'config' | 'skills'>
 ): Promise<InstanceType<Awaited<ReturnType<typeof requireAgentOS>>['SkillRegistry']>> {
-  const { SkillRegistry } = await requireAgentOS();
-  const registry = new SkillRegistry(options?.config);
-  if (typeof registry.loadFromDir === 'function') {
-    await registry.loadFromDir(getBundledCuratedSkillsDir(), { source: 'bundled' });
-  } else {
-    await registry.loadFromDirs([getBundledCuratedSkillsDir()]);
+  const runtime = await requireAgentOS();
+  const registry = new runtime.SkillRegistry(options?.config);
+  const selection = options?.skills ?? 'all';
+
+  if (selection !== 'none') {
+    await populateCuratedRegistry({
+      registry,
+      runtime,
+      selection,
+    });
   }
+
   return registry;
 }
 
@@ -268,12 +312,13 @@ export async function createCuratedSkillSnapshot(
     };
   }
 
-  const registry = await createCuratedSkillRegistry({ config: options?.config });
-  const filter = Array.isArray(selection) ? selection : undefined;
+  const registry = await createCuratedSkillRegistry({
+    config: options?.config,
+    skills: selection,
+  });
 
   return registry.buildSnapshot({
     platform: options?.platform,
     eligibility: options?.eligibility,
-    filter,
   });
 }
