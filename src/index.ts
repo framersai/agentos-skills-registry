@@ -67,8 +67,12 @@ export {
   getCuratedSkills,
   getCommunitySkills,
   getAllSkills,
+  getSkillEntries,
+  createLocalSkillProxy,
+  loadSkillByName,
+  loadSkillsByNames,
 } from './catalog.js';
-export type { SkillCatalogEntry } from './catalog.js';
+export type { SkillCatalogEntry, LoadedSkill } from './catalog.js';
 
 // ── Re-export workspace skill discovery (Feature 3.5) ───────────────────────
 

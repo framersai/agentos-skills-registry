@@ -149,15 +149,63 @@ export function parseSkillFrontmatter(content: string): SkillFrontmatter | null 
 // ── Skill discovery ─────────────────────────────────────────────────────────
 
 /**
+ * Create a lazy-loading skill factory for an absolute SKILL.md path.
+ * Used for workspace-discovered skills where the path is already resolved.
+ */
+function createAbsoluteSkillLoader(
+  absolutePath: string,
+  displayName: string,
+): () => Promise<import('./catalog.js').LoadedSkill> {
+  // Workspace skills use absolute paths, but createLocalSkillProxy resolves
+  // relative to package root. Instead, build the loader inline for absolute paths.
+  return async () => {
+    const { readFile } = await import('node:fs/promises');
+
+    let content: string;
+    try {
+      content = await readFile(absolutePath, 'utf-8');
+    } catch (err) {
+      throw new Error(
+        `Failed to load workspace SKILL.md at ${absolutePath}: ${err instanceof Error ? err.message : String(err)}`
+      );
+    }
+
+    // Use the lightweight built-in parser from catalog.ts via re-parse
+    const parsed = parseSkillFrontmatter(content);
+    const body = content.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '').trim();
+
+    const name = parsed?.name ?? path.basename(path.dirname(absolutePath));
+    const description =
+      parsed?.description ??
+      body.split('\n').find((l) => l.trim() && !l.startsWith('#'))?.trim() ??
+      '';
+
+    return {
+      name,
+      displayName,
+      description,
+      content: body,
+      frontmatter: (parsed ?? {}) as Record<string, unknown>,
+      sourcePath: absolutePath,
+    };
+  };
+}
+
+/**
  * Convert parsed frontmatter + filesystem path into a SkillCatalogEntry.
  */
-function frontmatterToEntry(fm: SkillFrontmatter, skillPath: string): SkillCatalogEntry {
+function frontmatterToEntry(
+  fm: SkillFrontmatter,
+  skillPath: string,
+  absoluteSkillMdPath: string,
+): SkillCatalogEntry {
+  const displayName = fm.name
+    .split('-')
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
   return {
     name: fm.name,
-    displayName: fm.name
-      .split('-')
-      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-      .join(' '),
+    displayName,
     description: fm.description ?? '',
     category: fm.category ?? 'workspace',
     tags: fm.tags ?? [],
@@ -166,6 +214,8 @@ function frontmatterToEntry(fm: SkillFrontmatter, skillPath: string): SkillCatal
     skillPath,
     source: 'community' as const,
     namespace: 'wunderland',
+    available: true,
+    loadSkill: createAbsoluteSkillLoader(absoluteSkillMdPath, displayName),
   };
 }
 
@@ -235,7 +285,7 @@ export async function discoverWorkspaceSkills(
 
     // Use relative path from skillsDir for the skillPath
     const relativePath = path.relative(skillsDir, skillMdPath);
-    discovered.push(frontmatterToEntry(frontmatter, relativePath));
+    discovered.push(frontmatterToEntry(frontmatter, relativePath, skillMdPath));
   }
 
   return discovered;
