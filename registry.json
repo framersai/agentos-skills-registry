@@ -14,6 +14,7 @@
       "content-creator",
       "deep-research",
       "discord-helper",
+      "email-intelligence",
       "facebook-bot",
       "git",
       "github",
@@ -430,6 +431,36 @@
           "emoji": "🎮",
           "primaryEnv": "DISCORD_BOT_TOKEN",
           "homepage": "https://discord.com/developers"
+        }
+      },
+      {
+        "id": "com.framers.skill.email-intelligence",
+        "name": "email-intelligence",
+        "displayName": "email-intelligence",
+        "version": "1.0.0",
+        "path": "registry/curated/email-intelligence",
+        "description": "Query and manage email across connected Gmail accounts — search threads, organize projects, extract attachments, and generate reports.",
+        "category": "productivity",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "keywords": [
+          "email",
+          "gmail",
+          "intelligence",
+          "threads",
+          "projects",
+          "attachments",
+          "reports",
+          "productivity"
+        ],
+        "requiredSecrets": [
+          "email-intelligence.internal_api_secret"
+        ],
+        "metadata": {
+          "emoji": "📧",
+          "primaryEnv": "INTERNAL_API_SECRET"
         }
       },
       {
