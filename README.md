@@ -6,7 +6,7 @@
 
 # @framers/agentos-skills-registry
 
-Curated skills registry for [AgentOS](https://github.com/framersai/agentos) — 40 SKILL.md prompt modules, typed catalog, and lazy-loading factories.
+Curated catalog of 40+ AgentOS skills with query helpers and lazy-loading factories.
 
 [![npm](https://img.shields.io/npm/v/@framers/agentos-skills-registry?logo=npm&color=cb3837)](https://www.npmjs.com/package/@framers/agentos-skills-registry)
 
@@ -14,15 +14,36 @@ Curated skills registry for [AgentOS](https://github.com/framersai/agentos) — 
 npm install @framers/agentos-skills-registry
 ```
 
-## What's Inside
+## What This Package Is
 
-This is the **single package** for AgentOS skills. It contains:
+This is the **skills catalog** — the data layer that ships 40+ curated SKILL.md
+prompt modules and provides typed query helpers, search functions, and lazy-loading
+factories for consuming them.
 
-- **40 curated SKILL.md files** — prompt modules spanning social automation, developer tooling, productivity, research, voice, and more
-- **registry.json** — machine-readable index of all skills with metadata
-- **Static catalog** (`SKILLS_CATALOG`) — typed array with query helpers
-- **Registry factories** — `createCuratedSkillRegistry()`, `createCuratedSkillSnapshot()` (requires `@framers/agentos`)
-- **Validation script** — `npm run validate` to lint SKILL.md files
+It is **not** the skills engine. The engine lives in
+[`@framers/agentos-skills`](https://www.npmjs.com/package/@framers/agentos)
+(exported from `@framers/agentos/skills`), which provides the runtime
+`SkillRegistry`, `SkillSnapshot` builder, frontmatter parser, and eligibility
+resolver.
+
+### Architecture: catalog vs. engine
+
+```
+@framers/agentos              ← the skills ENGINE (runtime)
+  └── /skills                    SkillRegistry, SkillSnapshot, parser, eligibility
+        ▲
+        │  lazy import()
+        │
+@framers/agentos-skills-registry   ← THIS package (CATALOG)
+  ├── registry/curated/*/SKILL.md  40+ bundled prompt modules
+  ├── registry.json                machine-readable index of all skills
+  ├── catalog.ts                   SKILLS_CATALOG array + query helpers (zero deps)
+  └── index.ts                     factory functions that lazy-import the engine
+```
+
+**Dependency direction:** this catalog package depends on `@framers/agentos`
+(optional peer dep), never the other way around. The engine knows nothing about
+the catalog — it just provides the parsing and registry machinery.
 
 ## Quick Start
 
@@ -67,7 +88,7 @@ Access the JSON index directly:
 import { getSkillsCatalog } from '@framers/agentos-skills-registry';
 
 const catalog = await getSkillsCatalog();
-console.log(catalog.skills.curated.length); // 40
+console.log(catalog.skills.curated.length); // 40+
 console.log(catalog.version); // '1.0.0'
 ```
 
@@ -80,7 +101,8 @@ console.log(registry.skills.curated[0].name); // 'weather'
 
 ### 3. Dynamically load skills into an agent (requires @framers/agentos)
 
-The factory functions lazy-load `@framers/agentos` via dynamic `import()`:
+The factory functions lazy-import `@framers/agentos/skills` (the engine) via
+dynamic `import()` — resolved only when you call them, cached after first use:
 
 ```bash
 npm install @framers/agentos-skills-registry @framers/agentos
@@ -149,23 +171,26 @@ const valid = skillNames.filter((name) => {
 const snapshot = await createCuratedSkillSnapshot({ skills: valid });
 ```
 
-When `skills` is a string array, the registry only loads those specific `SKILL.md`
+When `skills` is a string array, the catalog only loads those specific `SKILL.md`
 files before building the snapshot. It does not walk the full curated bundle first.
 Loaded skills also include parsed `metadata` so consumers do not need to decode
 the `metadata.agentos` block manually.
 
-## Two Import Paths
+## Sub-exports
 
-| Import | Peer deps | Use case |
-|--------|-----------|----------|
-| `@framers/agentos-skills-registry/catalog` | None | UI browsing, search, filtering |
-| `@framers/agentos-skills-registry` | `@framers/agentos` (optional) | Runtime loading, snapshots, factories |
+| Export path | Peer deps | Use case |
+|-------------|-----------|----------|
+| `@framers/agentos-skills-registry` | `@framers/agentos` (optional) | Full SDK: catalog + factory functions + schema types |
+| `@framers/agentos-skills-registry/catalog` | None | Lightweight: `SKILLS_CATALOG`, query helpers (search, filter, browse) |
+| `@framers/agentos-skills-registry/registry.json` | None | Raw JSON index of all skills |
+| `@framers/agentos-skills-registry/workspace-discovery` | None | Discover SKILL.md files in workspace directories |
+| `@framers/agentos-skills-registry/types` | None | TypeScript declarations for registry.json schema |
 
-The `@framers/agentos` dependency is loaded **lazily** at runtime and cached after first resolution. If it's not installed and you call a factory function, you get a clear error with install instructions.
+The `@framers/agentos` dependency is loaded **lazily** at runtime and cached after first resolution. If it is not installed and you call a factory function, you get a clear error with install instructions. The catalog query helpers work without it.
 
-## Included Skills (40)
+## Included Skills (40+)
 
-The catalog now includes both foundational utility skills and social automation modules, including:
+The catalog includes both foundational utility skills and social automation modules:
 
 - Information and research: `web-search`, `weather`, `summarize`, `deep-research`
 - Developer tools: `github`, `coding-agent`, `git`
@@ -201,26 +226,6 @@ import type {
 // SkillRegistryEntry — shape of entries in registry.json
 // SkillsRegistry — shape of the full registry.json file
 // SkillInstallSpec — install instructions for skill dependencies
-```
-
-## Exports
-
-| Export path | Contents |
-|-------------|----------|
-| `.` | Full SDK: catalog helpers + factory functions + schema types |
-| `./catalog` | Lightweight: `SKILLS_CATALOG`, query helpers (zero peer deps) |
-| `./registry.json` | Raw JSON index of all skills |
-| `./types` | TypeScript declarations for registry.json schema |
-
-## Relationship to Other Packages
-
-```
-@framers/agentos-skills-registry     ← This package (data + SDK)
-  ├── registry/curated/*/SKILL.md    (bundled prompt modules)
-  ├── registry.json                  (machine-readable index)
-  ├── catalog.ts                     (typed queries: search, filter, browse)
-  └── index.ts                       (factories: lazy-load @framers/agentos)
-        └── @framers/agentos         (optional peer: live SkillRegistry + snapshots)
 ```
 
 ## Contributing

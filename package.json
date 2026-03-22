@@ -10,7 +10,7 @@
     "CONTRIBUTING.md",
     "README.md"
   ],
-  "description": "Curated skills registry for AgentOS \u2014 SKILL.md prompt modules, typed catalog, and lazy-loading factories",
+  "description": "Curated skills catalog for AgentOS — 40+ bundled SKILL.md prompt modules with query helpers and lazy-loading factories",
   "type": "module",
   "sideEffects": false,
   "main": "./dist/index.js",
@@ -42,7 +42,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/framersai/agentos-skills-registry.git"
+    "url": "https://github.com/manicinc/voice-chat-assistant.git",
+    "directory": "packages/agentos-skills-registry"
   },
   "keywords": [
     "agentos",
