@@ -1,44 +1,66 @@
 {
   "version": "1.0.0",
-  "updated": "2026-03-14T05:52:19.478Z",
+  "updated": "2026-03-26T21:50:13.791Z",
   "categories": {
     "curated": [
       "1password",
       "account-manager",
+      "agency-orchestration",
+      "amazon-polly",
       "apple-notes",
       "apple-reminders",
       "blog-publisher",
       "bluesky-bot",
       "cloud-ops",
+      "code-safety",
       "coding-agent",
       "content-creator",
       "deep-research",
+      "diarization",
       "discord-helper",
       "email-intelligence",
+      "emergent-tools",
+      "endpoint-semantic",
       "facebook-bot",
       "git",
       "github",
+      "google-cloud-stt",
+      "google-cloud-tts",
+      "grounding-guard",
       "healthcheck",
       "image-gen",
       "instagram-bot",
+      "knowledge-routing",
       "linkedin-bot",
       "mastodon-bot",
       "memory-manager",
+      "ml-content-classifier",
+      "multimodal-ingestion",
       "notion",
       "obsidian",
+      "openwakeword",
+      "pii-redaction",
       "pinterest-bot",
+      "piper",
+      "porcupine",
       "reddit-bot",
       "seo-campaign",
       "site-deploy",
       "slack-helper",
       "social-broadcast",
       "spotify-player",
+      "streaming-stt-deepgram",
+      "streaming-stt-whisper",
+      "streaming-tts-elevenlabs",
+      "streaming-tts-openai",
       "summarize",
       "threads-bot",
       "tiktok-bot",
+      "topicality",
       "trello",
       "twitter-bot",
       "voice-conversation",
+      "vosk",
       "weather",
       "web-scraper",
       "web-search",
@@ -60,7 +82,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "1password",
           "passwords",
@@ -105,7 +127,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "accounts",
           "credentials",
@@ -131,6 +153,63 @@
         }
       },
       {
+        "id": "com.framers.skill.agency-orchestration",
+        "name": "agency-orchestration",
+        "displayName": "agency-orchestration",
+        "version": "1.0.0",
+        "path": "registry/curated/agency-orchestration",
+        "description": "Multi-agent orchestration via the agency() API — 6 strategies (sequential, parallel, debate, review-loop, hierarchical, graph), HITL approval, and nested agencies.",
+        "category": "orchestration",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "agency",
+          "multi-agent",
+          "orchestration",
+          "sequential",
+          "parallel",
+          "debate",
+          "graph",
+          "HITL"
+        ],
+        "metadata": {
+          "emoji": "🏛"
+        }
+      },
+      {
+        "id": "com.framers.skill.amazon-polly",
+        "name": "amazon-polly",
+        "displayName": "amazon-polly",
+        "version": "1.0.0",
+        "path": "registry/curated/amazon-polly",
+        "description": "Neural text-to-speech via Amazon Polly — high-quality voices, MP3 output, voice listing, default Joanna (en-US Neural).",
+        "category": "voice",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "voice",
+          "tts",
+          "text-to-speech",
+          "amazon",
+          "aws",
+          "polly",
+          "neural"
+        ],
+        "requiredSecrets": [
+          "aws.accessKeyId",
+          "aws.secretAccessKey"
+        ],
+        "metadata": {
+          "emoji": "🔊",
+          "primaryEnv": "AWS_ACCESS_KEY_ID",
+          "homepage": "https://docs.aws.amazon.com/polly/"
+        }
+      },
+      {
         "id": "com.framers.skill.apple-notes",
         "name": "apple-notes",
         "displayName": "apple-notes",
@@ -141,7 +220,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "apple-notes",
           "macos",
@@ -175,7 +254,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "apple-reminders",
           "macos",
@@ -210,7 +289,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "blog",
           "publishing",
@@ -254,7 +333,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "bluesky",
           "social-media",
@@ -294,7 +373,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "cloud",
           "devops",
@@ -311,6 +390,34 @@
         }
       },
       {
+        "id": "com.framers.skill.code-safety",
+        "name": "code-safety",
+        "displayName": "code-safety",
+        "version": "1.0.0",
+        "path": "registry/curated/code-safety",
+        "description": "Scan LLM-generated code for security vulnerabilities using language-aware pattern rules",
+        "category": "security",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "guardrails",
+          "code-safety",
+          "security",
+          "injection",
+          "xss",
+          "owasp",
+          "static-analysis"
+        ],
+        "requiredTools": [
+          "scan_code"
+        ],
+        "metadata": {
+          "emoji": "🛡"
+        }
+      },
+      {
         "id": "com.framers.skill.coding-agent",
         "name": "coding-agent",
         "displayName": "coding-agent",
@@ -321,7 +428,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "coding",
           "programming",
@@ -348,7 +455,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "content",
           "writing",
@@ -378,7 +485,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "research",
           "investigation",
@@ -406,6 +513,31 @@
         }
       },
       {
+        "id": "com.framers.skill.diarization",
+        "name": "diarization",
+        "displayName": "diarization",
+        "version": "1.0.0",
+        "path": "registry/curated/diarization",
+        "description": "Speaker diarization — identifies and tracks who is speaking at each moment in an audio stream, using provider-delegated labels or local offline clustering.",
+        "category": "voice",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "voice",
+          "diarization",
+          "speaker-identification",
+          "multi-speaker",
+          "offline",
+          "deepgram"
+        ],
+        "metadata": {
+          "emoji": "👥",
+          "homepage": "https://docs.wunderland.sh/guides/voice"
+        }
+      },
+      {
         "id": "com.framers.skill.discord-helper",
         "name": "discord-helper",
         "displayName": "discord-helper",
@@ -416,7 +548,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "discord",
           "messaging",
@@ -436,31 +568,96 @@
       {
         "id": "com.framers.skill.email-intelligence",
         "name": "email-intelligence",
-        "displayName": "email-intelligence",
+        "displayName": "Email Intelligence",
         "version": "1.0.0",
         "path": "registry/curated/email-intelligence",
-        "description": "Query and manage email across connected Gmail accounts — search threads, organize projects, extract attachments, and generate reports.",
+        "description": "",
+        "category": "uncategorized",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "metadata": {
+          "primaryEnv": "INTERNAL_API_SECRET",
+          "emoji": "📧",
+          "requires": {
+            "env": [
+              "INTERNAL_API_SECRET"
+            ]
+          },
+          "requires_tools": [
+            "searchAcrossThreads",
+            "getThreadHierarchy",
+            "listProjects",
+            "getProjectSummary",
+            "getProjectTimeline",
+            "listAccounts",
+            "getAttachment",
+            "createProject",
+            "addThreadToProject",
+            "generateReport",
+            "getDigestPreview",
+            "syncStatus"
+          ],
+          "categories": [
+            "productivity",
+            "email",
+            "intelligence"
+          ]
+        }
+      },
+      {
+        "id": "com.framers.skill.emergent-tools",
+        "name": "emergent-tools",
+        "displayName": "emergent-tools",
+        "version": "1.0.0",
+        "path": "registry/curated/emergent-tools",
+        "description": "Forge new tools at runtime via LLM — sandboxed execution, LLM-as-judge validation, composable tool building, and full audit trail.",
         "category": "productivity",
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
-          "email",
-          "gmail",
-          "intelligence",
-          "threads",
-          "projects",
-          "attachments",
-          "reports",
-          "productivity"
+          "emergent",
+          "tools",
+          "forge",
+          "sandbox",
+          "dynamic",
+          "runtime",
+          "LLM-judge"
         ],
-        "requiredSecrets": [
-          "email-intelligence.internal_api_secret"
+        "requiredTools": [
+          "forge_tool"
         ],
         "metadata": {
-          "emoji": "📧",
-          "primaryEnv": "INTERNAL_API_SECRET"
+          "emoji": "🔧"
+        }
+      },
+      {
+        "id": "com.framers.skill.endpoint-semantic",
+        "name": "endpoint-semantic",
+        "displayName": "endpoint-semantic",
+        "version": "1.0.0",
+        "path": "registry/curated/endpoint-semantic",
+        "description": "Semantic endpoint detection — uses an LLM to classify whether the user's utterance is a complete thought, reducing false turn boundaries on mid-sentence pauses.",
+        "category": "voice",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "voice",
+          "endpointing",
+          "turn-detection",
+          "semantic",
+          "llm",
+          "vad",
+          "silence"
+        ],
+        "metadata": {
+          "emoji": "💬",
+          "homepage": "https://docs.wunderland.sh/guides/voice"
         }
       },
       {
@@ -474,7 +671,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "facebook",
           "social-media",
@@ -513,7 +710,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "git",
           "version-control",
@@ -567,7 +764,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "github",
           "git",
@@ -616,6 +813,92 @@
         }
       },
       {
+        "id": "com.framers.skill.google-cloud-stt",
+        "name": "google-cloud-stt",
+        "displayName": "google-cloud-stt",
+        "version": "1.0.0",
+        "path": "registry/curated/google-cloud-stt",
+        "description": "Batch speech-to-text via Google Cloud Speech-to-Text API — LINEAR16 PCM, configurable language, word-level confidence scores.",
+        "category": "voice",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "voice",
+          "stt",
+          "speech-to-text",
+          "google",
+          "cloud",
+          "batch"
+        ],
+        "requiredSecrets": [
+          "google.cloudSttCredentials"
+        ],
+        "metadata": {
+          "emoji": "🎤",
+          "primaryEnv": "GOOGLE_CLOUD_STT_CREDENTIALS",
+          "homepage": "https://cloud.google.com/speech-to-text/docs"
+        }
+      },
+      {
+        "id": "com.framers.skill.google-cloud-tts",
+        "name": "google-cloud-tts",
+        "displayName": "google-cloud-tts",
+        "version": "1.0.0",
+        "path": "registry/curated/google-cloud-tts",
+        "description": "Text-to-speech synthesis via Google Cloud Text-to-Speech API — MP3 output, configurable language and voice, voice listing.",
+        "category": "voice",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "voice",
+          "tts",
+          "text-to-speech",
+          "google",
+          "cloud",
+          "neural"
+        ],
+        "requiredSecrets": [
+          "google.cloudTtsCredentials"
+        ],
+        "metadata": {
+          "emoji": "🔊",
+          "primaryEnv": "GOOGLE_CLOUD_TTS_CREDENTIALS",
+          "homepage": "https://cloud.google.com/text-to-speech/docs"
+        }
+      },
+      {
+        "id": "com.framers.skill.grounding-guard",
+        "name": "grounding-guard",
+        "displayName": "grounding-guard",
+        "version": "1.0.0",
+        "path": "registry/curated/grounding-guard",
+        "description": "Verify response faithfulness against RAG source documents using NLI entailment and LLM-as-judge",
+        "category": "security",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "guardrails",
+          "hallucination",
+          "grounding",
+          "faithfulness",
+          "nli",
+          "rag",
+          "fact-checking"
+        ],
+        "requiredTools": [
+          "check_grounding"
+        ],
+        "metadata": {
+          "emoji": "🔍"
+        }
+      },
+      {
         "id": "com.framers.skill.healthcheck",
         "name": "healthcheck",
         "displayName": "healthcheck",
@@ -626,7 +909,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "monitoring",
           "health",
@@ -659,7 +942,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "image-generation",
           "ai-art",
@@ -670,6 +953,9 @@
         ],
         "requiredSecrets": [
           "openai.api_key"
+        ],
+        "requiredTools": [
+          "generate_image"
         ],
         "metadata": {
           "emoji": "🎨",
@@ -688,7 +974,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "instagram",
           "social-media",
@@ -716,6 +1002,31 @@
         }
       },
       {
+        "id": "com.framers.skill.knowledge-routing",
+        "name": "knowledge-routing",
+        "displayName": "knowledge-routing",
+        "version": "1.0.0",
+        "path": "registry/curated/knowledge-routing",
+        "description": "QueryRouter for intelligent retrieval — classify queries into T0-T3 tiers, configure confidence thresholds, and route to the optimal retrieval strategy.",
+        "category": "productivity",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "query-router",
+          "classification",
+          "retrieval",
+          "RAG",
+          "vector-search",
+          "knowledge",
+          "routing"
+        ],
+        "metadata": {
+          "emoji": "🛤"
+        }
+      },
+      {
         "id": "com.framers.skill.linkedin-bot",
         "name": "linkedin-bot",
         "displayName": "linkedin-bot",
@@ -726,7 +1037,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "linkedin",
           "social-media",
@@ -764,7 +1075,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "mastodon",
           "fediverse",
@@ -804,7 +1115,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "memory",
           "cognitive",
@@ -818,6 +1129,67 @@
         }
       },
       {
+        "id": "com.framers.skill.ml-content-classifier",
+        "name": "ml-content-classifier",
+        "displayName": "ml-content-classifier",
+        "version": "1.0.0",
+        "path": "registry/curated/ml-content-classifier",
+        "description": "Real-time content safety classification using ML models (toxicity, prompt injection, jailbreak detection)",
+        "category": "security",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "guardrails",
+          "safety",
+          "toxicity",
+          "injection",
+          "jailbreak",
+          "classifier",
+          "ml",
+          "bert",
+          "onnx"
+        ],
+        "requiredTools": [
+          "classify_content"
+        ],
+        "metadata": {
+          "emoji": "🛡"
+        }
+      },
+      {
+        "id": "com.framers.skill.multimodal-ingestion",
+        "name": "multimodal-ingestion",
+        "displayName": "multimodal-ingestion",
+        "version": "1.0.0",
+        "path": "registry/curated/multimodal-ingestion",
+        "description": "Memory ingestion pipeline — document loaders (PDF, DOCX, HTML, OCR, URL), chunking engines, folder scanning, and import/export (JSON, Markdown, Obsidian, SQLite, ChatGPT).",
+        "category": "productivity",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "memory",
+          "ingestion",
+          "documents",
+          "PDF",
+          "DOCX",
+          "chunking",
+          "multimodal",
+          "import",
+          "export"
+        ],
+        "requiredTools": [
+          "memory_read",
+          "memory_write"
+        ],
+        "metadata": {
+          "emoji": "📥"
+        }
+      },
+      {
         "id": "com.framers.skill.notion",
         "name": "notion",
         "displayName": "notion",
@@ -828,7 +1200,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "notion",
           "wiki",
@@ -857,7 +1229,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "obsidian",
           "markdown",
@@ -875,6 +1247,65 @@
         }
       },
       {
+        "id": "com.framers.skill.openwakeword",
+        "name": "openwakeword",
+        "displayName": "openwakeword",
+        "version": "1.0.0",
+        "path": "registry/curated/openwakeword",
+        "description": "Offline wake-word detection via OpenWakeWord ONNX models using onnxruntime-node — fully open-source, configurable threshold, any ONNX-compatible model supported.",
+        "category": "voice",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "voice",
+          "wake-word",
+          "hotword",
+          "openwakeword",
+          "onnx",
+          "offline",
+          "open-source",
+          "privacy"
+        ],
+        "metadata": {
+          "emoji": "🚨",
+          "primaryEnv": "OPENWAKEWORD_MODEL_PATH",
+          "homepage": "https://github.com/dscripka/openWakeWord"
+        }
+      },
+      {
+        "id": "com.framers.skill.pii-redaction",
+        "name": "pii-redaction",
+        "displayName": "pii-redaction",
+        "version": "1.0.0",
+        "path": "registry/curated/pii-redaction",
+        "description": "Detect and redact personally identifiable information (PII) from text using a four-tier pipeline (regex + NLP + NER + LLM-as-judge)",
+        "category": "security",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "pii",
+          "privacy",
+          "redaction",
+          "gdpr",
+          "hipaa",
+          "compliance",
+          "security",
+          "ner"
+        ],
+        "requiredTools": [
+          "pii_scan",
+          "pii_redact"
+        ],
+        "metadata": {
+          "emoji": "🛡",
+          "primaryEnv": "PII_LLM_API_KEY"
+        }
+      },
+      {
         "id": "com.framers.skill.pinterest-bot",
         "name": "pinterest-bot",
         "displayName": "pinterest-bot",
@@ -885,7 +1316,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "pinterest",
           "social-media",
@@ -912,6 +1343,64 @@
         }
       },
       {
+        "id": "com.framers.skill.piper",
+        "name": "piper",
+        "displayName": "piper",
+        "version": "1.0.0",
+        "path": "registry/curated/piper",
+        "description": "Fully offline text-to-speech by spawning the Piper binary — ONNX model, WAV output, zero npm dependencies, no network required.",
+        "category": "voice",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "voice",
+          "tts",
+          "text-to-speech",
+          "piper",
+          "offline",
+          "local",
+          "privacy",
+          "onnx"
+        ],
+        "metadata": {
+          "emoji": "🔊",
+          "homepage": "https://github.com/rhasspy/piper"
+        }
+      },
+      {
+        "id": "com.framers.skill.porcupine",
+        "name": "porcupine",
+        "displayName": "porcupine",
+        "version": "1.0.0",
+        "path": "registry/curated/porcupine",
+        "description": "On-device wake-word detection via Picovoice Porcupine — privacy-preserving, configurable built-in keywords, per-keyword sensitivity tuning.",
+        "category": "voice",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "voice",
+          "wake-word",
+          "hotword",
+          "porcupine",
+          "picovoice",
+          "offline",
+          "privacy",
+          "hands-free"
+        ],
+        "requiredSecrets": [
+          "picovoice.accessKey"
+        ],
+        "metadata": {
+          "emoji": "🚨",
+          "primaryEnv": "PORCUPINE_ACCESS_KEY",
+          "homepage": "https://picovoice.ai/platform/porcupine/"
+        }
+      },
+      {
         "id": "com.framers.skill.reddit-bot",
         "name": "reddit-bot",
         "displayName": "reddit-bot",
@@ -922,7 +1411,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "reddit",
           "social-media",
@@ -963,7 +1452,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "seo",
           "link-building",
@@ -998,7 +1487,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "deploy",
           "cloud",
@@ -1034,7 +1523,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "slack",
           "messaging",
@@ -1066,7 +1555,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z"
+        "verifiedAt": "2026-03-26T21:50:13.791Z"
       },
       {
         "id": "com.framers.skill.spotify-player",
@@ -1079,7 +1568,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "spotify",
           "music",
@@ -1104,6 +1593,126 @@
         }
       },
       {
+        "id": "com.framers.skill.streaming-stt-deepgram",
+        "name": "streaming-stt-deepgram",
+        "displayName": "streaming-stt-deepgram",
+        "version": "1.0.0",
+        "path": "registry/curated/streaming-stt-deepgram",
+        "description": "Real-time streaming speech-to-text via Deepgram WebSocket API — sub-300 ms latency, Nova-2 model, speaker diarization, auto-reconnect.",
+        "category": "voice",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "voice",
+          "stt",
+          "speech-to-text",
+          "deepgram",
+          "streaming",
+          "real-time",
+          "diarization"
+        ],
+        "requiredSecrets": [
+          "deepgram.apiKey"
+        ],
+        "metadata": {
+          "emoji": "🎤",
+          "primaryEnv": "DEEPGRAM_API_KEY",
+          "homepage": "https://developers.deepgram.com/docs/getting-started-with-live-streaming-audio"
+        }
+      },
+      {
+        "id": "com.framers.skill.streaming-stt-whisper",
+        "name": "streaming-stt-whisper",
+        "displayName": "streaming-stt-whisper",
+        "version": "1.0.0",
+        "path": "registry/curated/streaming-stt-whisper",
+        "description": "Chunked sliding-window streaming speech-to-text via OpenAI Whisper HTTP API — compatible with local Faster-Whisper, Groq, and OpenRouter endpoints.",
+        "category": "voice",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "voice",
+          "stt",
+          "speech-to-text",
+          "whisper",
+          "openai",
+          "streaming",
+          "local",
+          "offline-compatible"
+        ],
+        "requiredSecrets": [
+          "openai.apiKey"
+        ],
+        "metadata": {
+          "emoji": "🎙️",
+          "primaryEnv": "OPENAI_API_KEY",
+          "homepage": "https://platform.openai.com/docs/guides/speech-to-text"
+        }
+      },
+      {
+        "id": "com.framers.skill.streaming-tts-elevenlabs",
+        "name": "streaming-tts-elevenlabs",
+        "displayName": "streaming-tts-elevenlabs",
+        "version": "1.0.0",
+        "path": "registry/curated/streaming-tts-elevenlabs",
+        "description": "Real-time streaming text-to-speech via ElevenLabs WebSocket API — persistent connection, sentence-boundary flushing, turbo and multilingual models.",
+        "category": "voice",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "voice",
+          "tts",
+          "text-to-speech",
+          "elevenlabs",
+          "streaming",
+          "websocket",
+          "high-quality"
+        ],
+        "requiredSecrets": [
+          "elevenlabs.apiKey"
+        ],
+        "metadata": {
+          "emoji": "🔊",
+          "primaryEnv": "ELEVENLABS_API_KEY",
+          "homepage": "https://elevenlabs.io/docs/api-reference/text-to-speech"
+        }
+      },
+      {
+        "id": "com.framers.skill.streaming-tts-openai",
+        "name": "streaming-tts-openai",
+        "displayName": "streaming-tts-openai",
+        "version": "1.0.0",
+        "path": "registry/curated/streaming-tts-openai",
+        "description": "Low-latency streaming text-to-speech via OpenAI TTS API — adaptive sentence chunking, concurrent fetch pipelining, six voices.",
+        "category": "voice",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "voice",
+          "tts",
+          "text-to-speech",
+          "openai",
+          "streaming",
+          "low-latency"
+        ],
+        "requiredSecrets": [
+          "openai.apiKey"
+        ],
+        "metadata": {
+          "emoji": "🔊",
+          "primaryEnv": "OPENAI_API_KEY",
+          "homepage": "https://platform.openai.com/docs/guides/text-to-speech"
+        }
+      },
+      {
         "id": "com.framers.skill.summarize",
         "name": "summarize",
         "displayName": "summarize",
@@ -1114,7 +1723,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "summarization",
           "text-processing",
@@ -1140,7 +1749,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "threads",
           "social-media",
@@ -1176,7 +1785,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "tiktok",
           "video",
@@ -1203,6 +1812,33 @@
         }
       },
       {
+        "id": "com.framers.skill.topicality",
+        "name": "topicality",
+        "displayName": "topicality",
+        "version": "1.0.0",
+        "path": "registry/curated/topicality",
+        "description": "Enforce allowed and forbidden conversation topics using semantic embedding similarity with session-aware drift detection",
+        "category": "security",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "guardrails",
+          "topics",
+          "topicality",
+          "off-topic",
+          "embeddings",
+          "drift-detection"
+        ],
+        "requiredTools": [
+          "check_topic"
+        ],
+        "metadata": {
+          "emoji": "🎯"
+        }
+      },
+      {
         "id": "com.framers.skill.trello",
         "name": "trello",
         "displayName": "trello",
@@ -1213,7 +1849,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "trello",
           "kanban",
@@ -1246,7 +1882,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "twitter",
           "social-media",
@@ -1289,7 +1925,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "voice",
           "speech",
@@ -1306,6 +1942,32 @@
         }
       },
       {
+        "id": "com.framers.skill.vosk",
+        "name": "vosk",
+        "displayName": "vosk",
+        "version": "1.0.0",
+        "path": "registry/curated/vosk",
+        "description": "Fully offline speech-to-text via the Vosk library — streaming recognition, 16 kHz PCM, no network required after model download.",
+        "category": "voice",
+        "namespace": "wunderland",
+        "verified": true,
+        "source": "curated",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
+        "keywords": [
+          "voice",
+          "stt",
+          "speech-to-text",
+          "vosk",
+          "offline",
+          "local",
+          "privacy"
+        ],
+        "metadata": {
+          "emoji": "🎤",
+          "homepage": "https://alphacephei.com/vosk/"
+        }
+      },
+      {
         "id": "com.framers.skill.weather",
         "name": "weather",
         "displayName": "weather",
@@ -1316,7 +1978,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "weather",
           "forecast",
@@ -1342,7 +2004,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "scraping",
           "browser",
@@ -1379,7 +2041,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "search",
           "web",
@@ -1406,7 +2068,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "transcription",
           "whisper",
@@ -1469,7 +2131,7 @@
         "namespace": "wunderland",
         "verified": true,
         "source": "curated",
-        "verifiedAt": "2026-03-14T05:52:19.478Z",
+        "verifiedAt": "2026-03-26T21:50:13.791Z",
         "keywords": [
           "youtube",
           "video",
@@ -1502,8 +2164,8 @@
     "community": []
   },
   "stats": {
-    "totalSkills": 40,
-    "curatedCount": 40,
+    "totalSkills": 63,
+    "curatedCount": 63,
     "communityCount": 0
   }
 }

@@ -10,7 +10,7 @@
     "CONTRIBUTING.md",
     "README.md"
   ],
-  "description": "Curated skills catalog for AgentOS — 40+ bundled SKILL.md prompt modules with query helpers and lazy-loading factories",
+  "description": "Curated skills catalog for AgentOS — 60+ bundled SKILL.md prompt modules with query helpers and lazy-loading factories",
   "type": "module",
   "sideEffects": false,
   "main": "./dist/index.js",
