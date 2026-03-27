@@ -91,6 +91,44 @@ Additional tips:
 - "Show me 3 variations of this hero image with different color palettes."
 - "Generate a 16:9 cinematic landscape of a neon-lit Tokyo street at night in the rain."
 
+## Provider Preferences
+
+You can override the default fallback chain on a per-request basis using the `providerPreferences` field from the agent config (see `providerPreferences.image` in `agent.config.json`). This lets users pin preferred providers, weight them for probabilistic routing, or block specific providers entirely.
+
+| Key | Type | Purpose |
+|-----|------|---------|
+| `preferred` | `string[]` | Ordered list of provider IDs to try first (e.g., `['stability', 'openai']`). |
+| `weights` | `Record<string, number>` | Relative selection weights for probabilistic routing (e.g., `{ stability: 0.7, openai: 0.3 }`). |
+| `blocked` | `string[]` | Provider IDs that must never be used (e.g., `['replicate']`). |
+
+Example — passing preferences inline:
+
+```ts
+generateImage({
+  prompt: 'A neon-lit Tokyo alley in the rain',
+  providerPreferences: {
+    preferred: ['stability', 'openai'],
+    blocked: ['replicate'],
+  },
+});
+```
+
+Example — setting in `agent.config.json` so all image calls inherit the preference:
+
+```jsonc
+{
+  "providerPreferences": {
+    "image": {
+      "preferred": ["stability", "bfl"],
+      "weights": { "stability": 0.6, "bfl": 0.4 },
+      "blocked": ["replicate"]
+    }
+  }
+}
+```
+
+When `providerPreferences.image` is set in the agent config, the runtime merges it with any per-request overrides (per-request wins). Blocked providers are removed from the fallback chain before any attempt is made.
+
 ## Constraints
 
 - Image generation costs API credits per request; inform the user of approximate costs when possible.
