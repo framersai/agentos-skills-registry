@@ -1,6 +1,6 @@
 {
   "name": "@framers/agentos-skills-registry",
-  "version": "0.2.1",
+  "version": "0.17.0",
   "files": [
     "dist",
     "registry",
