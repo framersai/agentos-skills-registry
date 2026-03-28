@@ -1,8 +1,18 @@
 /**
- * @fileoverview AgentOS Skills Registry.
+ * @fileoverview AgentOS Skills Registry — Catalog SDK.
  *
- * Single package containing curated SKILL.md prompt modules, a typed catalog,
- * and lazy-loading factory functions for SkillRegistry/SkillSnapshot.
+ * Provides the programmatic catalog, query helpers, and lazy-loading factory
+ * functions for the curated SKILL.md prompt modules.
+ *
+ * **Ecosystem layout** (mirrors extensions):
+ * ```
+ * @framers/agentos/skills               ← Engine (SkillLoader, SkillRegistry)
+ * @framers/agentos-skills               ← Content (69 SKILL.md files + registry.json)
+ * @framers/agentos-skills-registry      ← Catalog SDK (this package)
+ * ```
+ *
+ * Content (SKILL.md files + registry.json) lives in `@framers/agentos-skills`.
+ * This SDK reads that content at runtime via `createRequire().resolve()`.
  *
  * `@framers/agentos` is an **optional peer dependency** — the catalog helpers
  * (re-exported from `./catalog.js`) work without it.  Only the factory
@@ -14,6 +24,7 @@
 
 import * as path from 'node:path';
 import * as fs from 'node:fs/promises';
+import { createRequire } from 'node:module';
 
 // ── Local mirror types (avoid eager import of @framers/agentos) ─────────────
 // These are structurally compatible with the canonical types from
@@ -150,34 +161,52 @@ async function requireAgentOS(): Promise<NonNullable<typeof _agentosSkillsMod>> 
   }
 }
 
-// ── Path helpers (resolve locally — SKILL.md files are bundled in this package) ───────
+// ── Path helpers (resolve from @framers/agentos-skills content package) ──────
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
-
-/** Package root (one level up from dist/ or src/) */
-function resolvePackageRoot(): string {
-  // Works from both dist/index.js and src/index.ts
-  return path.resolve(__dirname, '..');
+/**
+ * Resolve the root of the `@framers/agentos-skills` content package.
+ *
+ * SKILL.md files and registry.json now live in the content package, not this
+ * SDK package. This mirrors the extensions layout:
+ * `@framers/agentos-extensions` (content) + `@framers/agentos-extensions-registry` (SDK).
+ */
+function resolveContentPackageRoot(): string {
+  try {
+    const require = createRequire(import.meta.url);
+    const pkgPath = require.resolve('@framers/agentos-skills/package.json');
+    return path.dirname(pkgPath);
+  } catch {
+    // Monorepo fallback: content package is a sibling directory
+    const __dirname = path.dirname(new URL(import.meta.url).pathname);
+    const thisPackageRoot = path.resolve(__dirname, '..');
+    return path.resolve(thisPackageRoot, '..', 'agentos-skills');
+  }
 }
 
+/**
+ * Resolve the path to `registry.json` in the content package.
+ */
 function resolveCatalogPath(): string {
-  return path.join(resolvePackageRoot(), 'registry.json');
+  return path.join(resolveContentPackageRoot(), 'registry.json');
 }
 
 /**
  * Absolute path to the bundled curated skills directory.
  *
+ * Resolves into `@framers/agentos-skills/registry/curated/`.
  * This directory can be passed to `SkillRegistry.loadFromDirs([dir])`.
  */
 export function getBundledCuratedSkillsDir(): string {
-  return path.join(resolvePackageRoot(), 'registry', 'curated');
+  return path.join(resolveContentPackageRoot(), 'registry', 'curated');
 }
 
 /**
  * Absolute path to the bundled community skills directory.
+ *
+ * Resolves into `@framers/agentos-skills/registry/community/`.
  */
 export function getBundledCommunitySkillsDir(): string {
-  return path.join(resolvePackageRoot(), 'registry', 'community');
+  return path.join(resolveContentPackageRoot(), 'registry', 'community');
 }
 
 // ── Options ─────────────────────────────────────────────────────────────────
@@ -225,7 +254,7 @@ export interface SkillsCatalog {
 // ── Catalog JSON loader ─────────────────────────────────────────────────────
 
 /**
- * Load the bundled registry.json catalog.
+ * Load the registry.json catalog from the `@framers/agentos-skills` content package.
  */
 export async function getSkillsCatalog(): Promise<SkillsCatalog> {
   const registryPath = resolveCatalogPath();

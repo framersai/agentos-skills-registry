@@ -1,8 +1,18 @@
 import { afterEach, describe, it, expect, vi } from 'vitest';
+import { createRequire } from 'node:module';
 
 import { SKILLS_CATALOG, loadSkillByName, searchSkills } from '../src/catalog';
 import { createCuratedSkillRegistry, createCuratedSkillSnapshot } from '../src/index';
-import registry from '../registry.json';
+
+// registry.json now lives in the @framers/agentos-skills content package
+const require = createRequire(import.meta.url);
+let registry: { skills: { curated: unknown[] } };
+try {
+  registry = require('@framers/agentos-skills/registry.json');
+} catch {
+  // Monorepo fallback: sibling directory
+  registry = require('../../agentos-skills/registry.json');
+}
 
 describe('@framers/agentos-skills-registry', () => {
   afterEach(() => {

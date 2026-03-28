@@ -1,14 +1,24 @@
 /**
- * @fileoverview Curated Skills Catalog for AgentOS
+ * @fileoverview Curated Skills Catalog SDK for AgentOS
  * @module @framers/agentos-skills-registry/catalog
  *
- * Programmatic catalog derived from registry.json so it stays in sync with
- * bundled SKILL.md entries.
+ * Programmatic catalog derived from `@framers/agentos-skills/registry.json`
+ * so it stays in sync with the bundled SKILL.md entries in the content package.
+ *
+ * **Ecosystem layout** (mirrors extensions):
+ * ```
+ * @framers/agentos/skills               ← Engine (SkillLoader, SkillRegistry)
+ * @framers/agentos-skills               ← Content (69 SKILL.md files + registry.json)
+ * @framers/agentos-skills-registry      ← Catalog SDK (this package)
+ * ```
  *
  * Pattern mirrors `@framers/agentos-extensions-registry/tool-registry`:
  *   - `SKILLS_CATALOG` array with metadata + lazy `loadSkill` factory
  *   - `createLocalSkillProxy()` for lazy-loading from local paths
  *   - `loadSkillByName()` for on-demand loading by name
+ *
+ * Content (SKILL.md files + registry.json) lives in `@framers/agentos-skills`.
+ * This SDK resolves paths from that package at runtime.
  */
 
 import * as path from 'node:path';
@@ -114,11 +124,29 @@ export interface SkillCatalogEntry {
 // PATH HELPERS
 // ============================================================================
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
-
-/** Package root (one level up from dist/ or src/) */
-function resolvePackageRoot(): string {
-  return path.resolve(__dirname, '..');
+/**
+ * Resolve the root of the `@framers/agentos-skills` content package.
+ *
+ * Content (SKILL.md files + registry.json) has been moved out of this SDK
+ * package and into the dedicated content package `@framers/agentos-skills`,
+ * mirroring how `@framers/agentos-extensions` holds extension content while
+ * `@framers/agentos-extensions-registry` holds the SDK.
+ *
+ * Uses `createRequire().resolve()` to find the installed content package,
+ * with a monorepo-aware fallback that walks up from this file.
+ */
+function resolveContentPackageRoot(): string {
+  try {
+    // Standard resolution: find @framers/agentos-skills/package.json
+    const require = createRequire(import.meta.url);
+    const pkgPath = require.resolve('@framers/agentos-skills/package.json');
+    return path.dirname(pkgPath);
+  } catch {
+    // Monorepo fallback: content package is a sibling directory
+    const __dirname = path.dirname(new URL(import.meta.url).pathname);
+    const thisPackageRoot = path.resolve(__dirname, '..');
+    return path.resolve(thisPackageRoot, '..', 'agentos-skills');
+  }
 }
 
 // ============================================================================
@@ -312,15 +340,29 @@ export function createLocalSkillProxy(
   relativePath: string,
   displayName: string,
 ): () => Promise<LoadedSkill> {
-  return async () => loadSkillFromAbsolutePath(path.resolve(resolvePackageRoot(), relativePath), displayName);
+  return async () => loadSkillFromAbsolutePath(path.resolve(resolveContentPackageRoot(), relativePath), displayName);
 }
 
 // ============================================================================
 // CATALOG BUILD
 // ============================================================================
 
-const require = createRequire(import.meta.url);
-const registry = require('../registry.json') as SkillsRegistry;
+/**
+ * Load registry.json from the `@framers/agentos-skills` content package.
+ *
+ * Uses `createRequire` to resolve the content package's registry.json,
+ * with a monorepo-aware fallback for development.
+ */
+const _require = createRequire(import.meta.url);
+let registry: SkillsRegistry;
+try {
+  // Resolve from @framers/agentos-skills content package
+  registry = _require('@framers/agentos-skills/registry.json') as SkillsRegistry;
+} catch {
+  // Monorepo fallback: sibling directory
+  const contentRoot = resolveContentPackageRoot();
+  registry = _require(path.join(contentRoot, 'registry.json')) as SkillsRegistry;
+}
 
 function toStringArray(value: unknown): string[] {
   if (!Array.isArray(value)) return [];

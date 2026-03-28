@@ -1,9 +1,12 @@
 /**
- * @fileoverview Type declarations for registry.json schema.
+ * @fileoverview Type declarations for the registry.json schema.
  *
- * These types describe the shape of the SKILL.md registry catalog
- * (registry.json). They differ from the SkillCatalogEntry in catalog.ts,
- * which is a higher-level, UI-friendly representation.
+ * These types describe the shape of `@framers/agentos-skills/registry.json` —
+ * the machine-readable index of all bundled SKILL.md files. The canonical
+ * type declarations also exist in `@framers/agentos-skills/types.d.ts`.
+ *
+ * These types differ from `SkillCatalogEntry` in `catalog.ts`, which is a
+ * higher-level, UI-friendly representation with lazy-loading factories.
  *
  * @module @framers/agentos-skills-registry/schema-types
  */

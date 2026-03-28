@@ -1,16 +1,12 @@
 {
   "name": "@framers/agentos-skills-registry",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "files": [
     "dist",
-    "registry",
-    "registry.json",
     "types.d.ts",
-    "scripts",
-    "CONTRIBUTING.md",
     "README.md"
   ],
-  "description": "Curated skills catalog for AgentOS — 60+ bundled SKILL.md prompt modules with query helpers and lazy-loading factories",
+  "description": "Catalog SDK for AgentOS skills — query helpers, lazy loaders, and factory functions for curated SKILL.md prompt modules",
   "type": "module",
   "sideEffects": false,
   "main": "./dist/index.js",
@@ -28,15 +24,12 @@
       "import": "./dist/workspace-discovery.js",
       "types": "./dist/workspace-discovery.d.ts"
     },
-    "./registry.json": "./registry.json",
     "./types": "./types.d.ts",
     "./package.json": "./package.json"
   },
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist",
-    "validate": "node scripts/validate-skill.mjs",
-    "update:registry": "node scripts/update-registry.mjs",
     "prepublishOnly": "npm run build",
     "test": "vitest run"
   },
@@ -48,8 +41,8 @@
     "agentos",
     "skills",
     "registry",
+    "catalog-sdk",
     "lazy-loading",
-    "dependency-injection",
     "ai-agent",
     "prompt-modules"
   ],
@@ -63,6 +56,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@framers/agentos-skills": ">=1.0.0",
     "yaml": "^2.8.1"
   },
   "peerDependencies": {
