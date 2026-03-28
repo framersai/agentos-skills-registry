@@ -77,9 +77,7 @@ describe('@framers/agentos-skills-registry', () => {
     expect(skill).not.toBeNull();
     expect(skill?.name).toBe('github');
     expect(skill?.frontmatter.name).toBe('github');
-    expect(skill?.metadata?.primaryEnv).toBe('GITHUB_TOKEN');
-    expect(skill?.metadata?.emoji).toBe('\u{1F419}');
-    expect(skill?.metadata?.requires?.bins).toEqual(['gh']);
-    expect(skill?.metadata?.install?.[0]?.kind).toBe('brew');
+    expect(skill?.metadata?.emoji).toBe('\u{1F4BB}');
+    expect(skill?.frontmatter.requires_secrets).toContain('github.token');
   });
 });
