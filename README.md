@@ -6,7 +6,7 @@
 
 # @framers/agentos-skills-registry
 
-**Catalog SDK for AgentOS skills** — query helpers, lazy loaders, and factory functions for curated SKILL.md prompt modules.
+**Catalog SDK** for querying and loading AgentOS skills.
 
 [![npm](https://img.shields.io/npm/v/@framers/agentos-skills-registry?logo=npm&color=cb3837)](https://www.npmjs.com/package/@framers/agentos-skills-registry)
 
@@ -14,23 +14,15 @@
 npm install @framers/agentos-skills-registry
 ```
 
-> **This is the catalog SDK.** It provides typed query helpers, search functions,
-> and lazy-loading factories for consuming curated skills.
->
-> The **skill content** (69 SKILL.md files + registry.json) lives in
-> [`@framers/agentos-skills`](https://github.com/framersai/agentos-skills)
-> and is installed automatically as a dependency.
->
-> The **runtime engine** (SkillLoader, SkillRegistry) lives in
-> [`@framers/agentos`](https://github.com/framersai/agentos) at `@framers/agentos/skills`.
+For the **skill content** (SKILL.md files), see [`@framers/agentos-skills`](https://github.com/framersai/agentos-skills).
 
 ## Ecosystem
 
-```
-@framers/agentos/skills               <- Engine (SkillLoader, SkillRegistry, path utils)
-@framers/agentos-skills               <- Content (69 SKILL.md files + registry.json)
-@framers/agentos-skills-registry      <- Catalog SDK (you are here)
-```
+| Package | Role |
+|---------|------|
+| `@framers/agentos-skills` | Content -- 69 SKILL.md files + registry.json |
+| `@framers/agentos-skills-registry` | Catalog SDK -- query helpers, lazy loaders, factories |
+| `@framers/agentos` | Engine -- SkillLoader, SkillRegistry, SkillSnapshot |
 
 > This layout mirrors the extensions ecosystem:
 > `@framers/agentos-extensions` (content) + `@framers/agentos-extensions-registry` (SDK).
@@ -120,37 +112,37 @@ const merged = mergeWithWorkspaceSkills(SKILLS_CATALOG, workspace);
 
 ### Catalog Queries
 
-- `SKILLS_CATALOG` — Sorted array of all curated + community skill entries
-- `searchSkills(query)` — Full-text search across names, descriptions, tags
-- `getSkillsByCategory(category)` — Filter by category
-- `getSkillByName(name)` — Single skill lookup
-- `getAvailableSkills(installedTools)` — Filter by available tools
-- `getCategories()` — List unique categories
-- `getSkillsByTag(tag)` — Filter by tag
-- `getCuratedSkills()` / `getCommunitySkills()` / `getAllSkills()` — Source filters
-- `getSkillEntries(names)` — Filter by name list (`'all'` | `'none'` | `string[]`)
+- `SKILLS_CATALOG` -- Sorted array of all curated + community skill entries
+- `searchSkills(query)` -- Full-text search across names, descriptions, tags
+- `getSkillsByCategory(category)` -- Filter by category
+- `getSkillByName(name)` -- Single skill lookup
+- `getAvailableSkills(installedTools)` -- Filter by available tools
+- `getCategories()` -- List unique categories
+- `getSkillsByTag(tag)` -- Filter by tag
+- `getCuratedSkills()` / `getCommunitySkills()` / `getAllSkills()` -- Source filters
+- `getSkillEntries(names)` -- Filter by name list (`'all'` | `'none'` | `string[]`)
 
 ### Lazy Loading
 
-- `loadSkillByName(name)` — Load and parse a single SKILL.md by name
-- `loadSkillsByNames(names)` — Parallel load multiple skills
-- `createLocalSkillProxy(relativePath, displayName)` — Factory for lazy loading
+- `loadSkillByName(name)` -- Load and parse a single SKILL.md by name
+- `loadSkillsByNames(names)` -- Parallel load multiple skills
+- `createLocalSkillProxy(relativePath, displayName)` -- Factory for lazy loading
 
 ### Factory Functions (requires @framers/agentos)
 
-- `createCuratedSkillRegistry(options?)` — Create a live `SkillRegistry` with selected curated skills
-- `createCuratedSkillSnapshot(options?)` — Build a `SkillSnapshot` ready for prompt injection
+- `createCuratedSkillRegistry(options?)` -- Create a live `SkillRegistry` with selected curated skills
+- `createCuratedSkillSnapshot(options?)` -- Build a `SkillSnapshot` ready for prompt injection
 
 ### Path Helpers
 
-- `getBundledCuratedSkillsDir()` — Absolute path to `@framers/agentos-skills/registry/curated/`
-- `getBundledCommunitySkillsDir()` — Absolute path to `@framers/agentos-skills/registry/community/`
+- `getBundledCuratedSkillsDir()` -- Absolute path to `@framers/agentos-skills/registry/curated/`
+- `getBundledCommunitySkillsDir()` -- Absolute path to `@framers/agentos-skills/registry/community/`
 
 ### Workspace Discovery
 
-- `discoverWorkspaceSkills(options?)` — Scan `.agents/skills/` for workspace-local skills
-- `mergeWithWorkspaceSkills(registry, workspace)` — Merge with priority to workspace
-- `parseSkillFrontmatter(content)` — Parse YAML frontmatter from skill content
+- `discoverWorkspaceSkills(options?)` -- Scan `.agents/skills/` for workspace-local skills
+- `mergeWithWorkspaceSkills(registry, workspace)` -- Merge with priority to workspace
+- `parseSkillFrontmatter(content)` -- Parse YAML frontmatter from skill content
 
 ## License
 
