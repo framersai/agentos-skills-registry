@@ -54,7 +54,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@framers/agentos-skills": ">=1.0.0",
+    "@framers/agentos-skills": ">=0.3.0",
     "yaml": "^2.8.1"
   },
   "peerDependencies": {
