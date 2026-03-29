@@ -20,7 +20,7 @@ For the **skill content** (SKILL.md files), see [`@framers/agentos-skills`](http
 
 | Package | Role |
 |---------|------|
-| `@framers/agentos-skills` | Content -- 69 SKILL.md files + registry.json |
+| `@framers/agentos-skills` | Content -- 72 SKILL.md files + registry.json |
 | `@framers/agentos-skills-registry` | Catalog SDK -- query helpers, lazy loaders, factories |
 | `@framers/agentos` | Engine -- SkillLoader, SkillRegistry, SkillSnapshot |
 
@@ -30,7 +30,7 @@ For the **skill content** (SKILL.md files), see [`@framers/agentos-skills`](http
 | Package                              | Role            | What                                                    | Runtime Code | Dependencies             |
 | ------------------------------------ | --------------- | ------------------------------------------------------- | :----------: | ------------------------ |
 | **@framers/agentos/skills**          | **Engine**      | SkillLoader, SkillRegistry, path utils                  |     Yes      | `yaml`                   |
-| **@framers/agentos-skills**          | **Content**     | 69 SKILL.md files + registry.json index                 |      No      | None                     |
+| **@framers/agentos-skills**          | **Content**     | 72 SKILL.md files + registry.json index                 |      No      | None                     |
 | **@framers/agentos-skills-registry** | **Catalog SDK** | SKILLS_CATALOG, query helpers, lazy loaders, factories  |     Yes      | `agentos-skills`, `yaml` |
 
 ## Quick Start

@@ -7,7 +7,7 @@
  * **Ecosystem layout** (mirrors extensions):
  * ```
  * @framers/agentos/skills               ← Engine (SkillLoader, SkillRegistry)
- * @framers/agentos-skills               ← Content (69 SKILL.md files + registry.json)
+ * @framers/agentos-skills               ← Content (72 SKILL.md files + registry.json)
  * @framers/agentos-skills-registry      ← Catalog SDK (this package)
  * ```
  *
