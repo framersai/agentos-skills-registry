@@ -13,14 +13,17 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
+      "default": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
     "./catalog": {
       "import": "./dist/catalog.js",
+      "default": "./dist/catalog.js",
       "types": "./dist/catalog.d.ts"
     },
     "./workspace-discovery": {
       "import": "./dist/workspace-discovery.js",
+      "default": "./dist/workspace-discovery.js",
       "types": "./dist/workspace-discovery.d.ts"
     },
     "./package.json": "./package.json"
@@ -58,7 +61,7 @@
     "yaml": "^2.8.1"
   },
   "peerDependencies": {
-    "@framers/agentos": "^0.1.167"
+    "@framers/agentos": "^0.1.175"
   },
   "peerDependenciesMeta": {
     "@framers/agentos": {
@@ -66,7 +69,7 @@
     }
   },
   "devDependencies": {
-    "@framers/agentos": "^0.1.167",
+    "@framers/agentos": "^0.1.175",
     "@types/node": "^20.12.12",
     "typescript": "^5.4.5",
     "vitest": "^1.0.0"
