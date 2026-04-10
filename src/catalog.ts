@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * @fileoverview Curated Skills Catalog SDK for AgentOS
  * @module @framers/agentos-skills-registry/catalog

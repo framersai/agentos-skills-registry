@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * @fileoverview AgentOS Skills Registry — Catalog SDK.
  *

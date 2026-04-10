@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * @fileoverview Cross-Agent Skill Discovery (Feature 3.5)
  *

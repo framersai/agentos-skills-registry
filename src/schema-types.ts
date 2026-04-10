@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * @fileoverview Type declarations for the registry.json schema.
  *

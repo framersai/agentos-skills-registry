@@ -18,20 +18,20 @@ For the **skill content** (SKILL.md files), see [`@framers/agentos-skills`](http
 
 ## Ecosystem
 
-| Package | Role |
-|---------|------|
-| `@framers/agentos-skills` | Content -- 72 SKILL.md files + registry.json |
+| Package                            | Role                                                  |
+| ---------------------------------- | ----------------------------------------------------- |
+| `@framers/agentos-skills`          | Content -- 88 SKILL.md files + registry.json          |
 | `@framers/agentos-skills-registry` | Catalog SDK -- query helpers, lazy loaders, factories |
-| `@framers/agentos` | Engine -- SkillLoader, SkillRegistry, SkillSnapshot |
+| `@framers/agentos`                 | Engine -- SkillLoader, SkillRegistry, SkillSnapshot   |
 
 > This layout mirrors the extensions ecosystem:
 > `@framers/agentos-extensions` (content) + `@framers/agentos-extensions-registry` (SDK).
 
-| Package                              | Role            | What                                                    | Runtime Code | Dependencies             |
-| ------------------------------------ | --------------- | ------------------------------------------------------- | :----------: | ------------------------ |
-| **@framers/agentos/skills**          | **Engine**      | SkillLoader, SkillRegistry, path utils                  |     Yes      | `yaml`                   |
-| **@framers/agentos-skills**          | **Content**     | 72 SKILL.md files + registry.json index                 |      No      | None                     |
-| **@framers/agentos-skills-registry** | **Catalog SDK** | SKILLS_CATALOG, query helpers, lazy loaders, factories  |     Yes      | `agentos-skills`, `yaml` |
+| Package                              | Role            | What                                                   | Runtime Code | Dependencies             |
+| ------------------------------------ | --------------- | ------------------------------------------------------ | :----------: | ------------------------ |
+| **@framers/agentos/skills**          | **Engine**      | SkillLoader, SkillRegistry, path utils                 |     Yes      | `yaml`                   |
+| **@framers/agentos-skills**          | **Content**     | 88 SKILL.md files + registry.json index                |      No      | None                     |
+| **@framers/agentos-skills-registry** | **Catalog SDK** | SKILLS_CATALOG, query helpers, lazy loaders, factories |     Yes      | `agentos-skills`, `yaml` |
 
 ## Quick Start
 
@@ -47,7 +47,7 @@ import {
 
 // Full-text search
 const matches = searchSkills('github');
-console.log(matches.map(s => `${s.name}: ${s.description}`));
+console.log(matches.map((s) => `${s.name}: ${s.description}`));
 
 // By category
 const devSkills = getSkillsByCategory('developer');
@@ -102,11 +102,11 @@ const merged = mergeWithWorkspaceSkills(SKILLS_CATALOG, workspace);
 
 ## Sub-exports
 
-| Entry Point | What | Peer Deps |
-|---|---|---|
-| `@framers/agentos-skills-registry` | Full API: catalog + factories + workspace discovery | `@framers/agentos` (optional) |
-| `@framers/agentos-skills-registry/catalog` | `SKILLS_CATALOG`, query helpers, lazy loaders | None |
-| `@framers/agentos-skills-registry/workspace-discovery` | Workspace skill scanning + merging | None |
+| Entry Point                                            | What                                                | Peer Deps                     |
+| ------------------------------------------------------ | --------------------------------------------------- | ----------------------------- |
+| `@framers/agentos-skills-registry`                     | Full API: catalog + factories + workspace discovery | `@framers/agentos` (optional) |
+| `@framers/agentos-skills-registry/catalog`             | `SKILLS_CATALOG`, query helpers, lazy loaders       | None                          |
+| `@framers/agentos-skills-registry/workspace-discovery` | Workspace skill scanning + merging                  | None                          |
 
 ## API Reference
 
