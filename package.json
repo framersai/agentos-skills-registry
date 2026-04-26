@@ -57,11 +57,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@framers/agentos-skills": ">=0.3.0",
+    "@framers/agentos-skills": "^0.9.0",
     "yaml": "^2.8.1"
   },
   "peerDependencies": {
-    "@framers/agentos": "^0.5.1"
+    "@framers/agentos": "^0.5.2"
   },
   "peerDependenciesMeta": {
     "@framers/agentos": {
