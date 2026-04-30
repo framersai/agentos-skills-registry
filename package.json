@@ -5,7 +5,7 @@
     "dist",
     "README.md"
   ],
-  "description": "Catalog SDK for AgentOS skills — query helpers, lazy loaders, and factory functions for curated SKILL.md prompt modules",
+  "description": "Catalog SDK for AgentOS skills \u2014 query helpers, lazy loaders, and factory functions for curated SKILL.md prompt modules",
   "type": "module",
   "sideEffects": false,
   "main": "./dist/index.js",
@@ -52,7 +52,7 @@
     "email": "team@frame.dev",
     "url": "https://frame.dev"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },
