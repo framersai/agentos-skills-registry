@@ -5,7 +5,11 @@
     "dist",
     "README.md"
   ],
-  "description": "Catalog SDK for AgentOS skills \u2014 query helpers, lazy loaders, and factory functions for curated SKILL.md prompt modules",
+  "description": "Catalog SDK for AgentOS skills \u2014 query helpers, lazy loaders, and factory functions for curated SKILL.md prompt modules. Companion to the @framers/agentos TypeScript AI agent runtime.",
+  "homepage": "https://agentos.sh",
+  "bugs": {
+    "url": "https://github.com/framersai/agentos-skills-registry/issues"
+  },
   "type": "module",
   "sideEffects": false,
   "main": "./dist/index.js",
@@ -40,12 +44,22 @@
   },
   "keywords": [
     "agentos",
+    "framers-agentos",
+    "agentos-skills",
+    "agentos-skills-registry",
     "skills",
+    "skills-registry",
     "registry",
     "catalog-sdk",
     "lazy-loading",
     "ai-agent",
-    "prompt-modules"
+    "ai-agents",
+    "ai-agent-skills",
+    "agent-framework",
+    "prompt-modules",
+    "prompts",
+    "framers",
+    "frame-dev"
   ],
   "author": {
     "name": "Framers AI",
