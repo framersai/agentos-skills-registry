@@ -76,7 +76,7 @@
     "yaml": "^2.8.1"
   },
   "peerDependencies": {
-    "@framers/agentos": ">=0.7.0"
+    "@framers/agentos": "^0.10.4"
   },
   "peerDependenciesMeta": {
     "@framers/agentos": {
@@ -84,7 +84,7 @@
     }
   },
   "devDependencies": {
-    "@framers/agentos": "^0.9.135",
+    "@framers/agentos": "^0.10.4",
     "@types/node": "^20.12.12",
     "typescript": "^5.4.5",
     "vitest": "^1.0.0"
